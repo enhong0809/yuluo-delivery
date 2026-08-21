@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>御螺 YULUO | 螺蛳粉 Delivery</title>
 
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,8 +23,6 @@ button {
     font-family: inherit;
     cursor: pointer;
 }
-
-/* HEADER */
 
 header {
     position: sticky;
@@ -82,11 +76,8 @@ nav a:hover {
     font-weight: bold;
 }
 
-/* HERO */
-
 .hero {
     min-height: 520px;
-
     background:
         linear-gradient(
             90deg,
@@ -101,9 +92,7 @@ nav a:hover {
 
     display: flex;
     align-items: center;
-
     padding: 60px 8%;
-
     color: white;
 }
 
@@ -134,27 +123,24 @@ nav a:hover {
     gap: 15px;
 }
 
-.primary-btn {
-    background: #d51f26;
-    color: white;
+.primary-btn,
+.secondary-btn {
     border: none;
     padding: 15px 28px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
+}
+
+.primary-btn {
+    background: #d51f26;
+    color: white;
 }
 
 .secondary-btn {
     background: white;
     color: #111;
-    border: none;
-    padding: 15px 28px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
 }
-
-/* SECTION */
 
 .section {
     max-width: 1200px;
@@ -175,8 +161,6 @@ nav a:hover {
 .section-title p {
     color: #777;
 }
-
-/* CATEGORIES */
 
 .categories {
     display: flex;
@@ -199,8 +183,6 @@ nav a:hover {
     color: #d8ad58;
     border-color: #111;
 }
-
-/* PRODUCTS */
 
 .products {
     display: grid;
@@ -260,8 +242,6 @@ nav a:hover {
     font-size: 22px;
 }
 
-/* FEATURES */
-
 .features {
     background: #111;
     color: white;
@@ -271,12 +251,9 @@ nav a:hover {
     max-width: 1100px;
     margin: auto;
     padding: 50px 20px;
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
     gap: 30px;
-
     text-align: center;
 }
 
@@ -299,16 +276,11 @@ nav a:hover {
     font-size: 13px;
 }
 
-/* CART */
-
 .cart-overlay {
     display: none;
-
     position: fixed;
     inset: 0;
-
     background: rgba(0,0,0,.5);
-
     z-index: 200;
 }
 
@@ -318,21 +290,14 @@ nav a:hover {
 
 .cart {
     position: fixed;
-
     top: 0;
     right: -450px;
-
     width: 420px;
     max-width: 100%;
-
     height: 100vh;
-
     background: white;
-
     z-index: 201;
-
     transition: .3s;
-
     display: flex;
     flex-direction: column;
 }
@@ -344,9 +309,7 @@ nav a:hover {
 .cart-header {
     background: #111;
     color: white;
-
     padding: 20px;
-
     display: flex;
     justify-content: space-between;
 }
@@ -367,9 +330,7 @@ nav a:hover {
 .cart-item {
     display: flex;
     justify-content: space-between;
-
     border-bottom: 1px solid #eee;
-
     padding: 15px 0;
 }
 
@@ -385,74 +346,57 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 8px;
-
     margin-top: 8px;
 }
 
 .quantity button {
     width: 25px;
     height: 25px;
-
     border: 1px solid #ddd;
-
     background: white;
-
     border-radius: 5px;
 }
 
 .cart-footer {
     padding: 20px;
-
     border-top: 1px solid #eee;
 }
 
 .total-row {
     display: flex;
     justify-content: space-between;
-
     margin-bottom: 10px;
 }
 
 .grand-total {
     font-size: 20px;
     font-weight: bold;
-
     margin-top: 15px;
 }
 
 .checkout-btn {
     width: 100%;
-
     padding: 15px;
-
     background: #d51f26;
-
     border: none;
-
     color: white;
-
     font-weight: bold;
-
     border-radius: 8px;
-
     margin-top: 15px;
 }
 
-/* MODAL */
+.checkout-btn:disabled {
+    opacity: .6;
+}
 
 .modal {
     display: none;
-
     position: fixed;
     inset: 0;
-
     background: rgba(0,0,0,.65);
-
     z-index: 300;
-
     align-items: center;
     justify-content: center;
-
     padding: 20px;
 }
 
@@ -462,16 +406,11 @@ nav a:hover {
 
 .checkout {
     background: white;
-
     width: 600px;
     max-width: 100%;
-
     max-height: 90vh;
-
     overflow-y: auto;
-
     border-radius: 15px;
-
     padding: 30px;
 }
 
@@ -485,26 +424,18 @@ nav a:hover {
 
 .form-group label {
     display: block;
-
     margin-bottom: 7px;
-
     font-size: 14px;
-
     font-weight: bold;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
-
     width: 100%;
-
     padding: 13px;
-
     border: 1px solid #ddd;
-
     border-radius: 7px;
-
     font-size: 14px;
 }
 
@@ -514,77 +445,50 @@ nav a:hover {
 
 .delivery-info {
     background: #fff7e6;
-
     border: 1px solid #f0d394;
-
     padding: 15px;
-
     border-radius: 8px;
-
     margin-bottom: 20px;
-
     font-size: 13px;
 }
 
 .close-modal {
     float: right;
-
     border: none;
-
     background: none;
-
     font-size: 25px;
 }
 
-/* SUCCESS */
-
 .success {
     text-align: center;
-
     padding: 40px 20px;
 }
 
 .success-icon {
     width: 80px;
     height: 80px;
-
     border-radius: 50%;
-
     background: #1d9b50;
-
     color: white;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     font-size: 40px;
-
     margin: 0 auto 20px;
 }
 
 .order-number {
     background: #f5f5f5;
-
     padding: 15px;
-
     margin: 20px 0;
-
     border-radius: 8px;
-
     font-weight: bold;
 }
 
-/* FOOTER */
-
 footer {
     background: #111;
-
     color: white;
-
     padding: 50px 20px;
-
     text-align: center;
 }
 
@@ -594,11 +498,8 @@ footer .logo {
 
 footer p {
     color: #aaa;
-
     font-size: 13px;
 }
-
-/* MOBILE */
 
 @media (max-width: 800px) {
 
@@ -612,7 +513,6 @@ footer p {
 
     .hero {
         min-height: 500px;
-
         padding: 40px 25px;
     }
 
@@ -626,7 +526,6 @@ footer p {
 
     .products {
         grid-template-columns: repeat(2, 1fr);
-
         gap: 12px;
     }
 
@@ -669,45 +568,28 @@ footer p {
         grid-template-columns: 1fr 1fr;
     }
 }
-
 </style>
-
 </head>
 
 <body>
 
-
 <header>
 
     <div class="logo">
-
         御螺
-
         <small>YULUO</small>
-
     </div>
 
     <nav>
-
         <a href="#home">首页</a>
-
         <a href="#menu">菜单</a>
-
         <a href="#delivery">配送</a>
-
         <a href="#about">关于我们</a>
-
     </nav>
 
-    <button
-        class="cart-button"
-        onclick="openCart()"
-    >
-
+    <button class="cart-button" onclick="openCart()">
         🛒 购物车
-
         <span id="cartCount">0</span>
-
     </button>
 
 </header>
@@ -722,33 +604,23 @@ footer p {
         <h2>正宗风味 · 送到你家</h2>
 
         <p>
-
             一碗热腾腾的螺蛳粉，
-
             精选食材，现点现做。
-
             肉食与素食分开制作。
-
         </p>
 
         <div class="hero-buttons">
 
             <button
                 class="primary-btn"
-                onclick="document.getElementById('menu').scrollIntoView()"
-            >
-
+                onclick="document.getElementById('menu').scrollIntoView()">
                 立即下单
-
             </button>
 
             <button
                 class="secondary-btn"
-                onclick="document.getElementById('menu').scrollIntoView()"
-            >
-
+                onclick="document.getElementById('menu').scrollIntoView()">
                 查看菜单
-
             </button>
 
         </div>
@@ -773,46 +645,38 @@ footer p {
 
         <button
             class="category-btn active"
-            onclick="filterProducts('all', this)"
-        >
+            onclick="filterProducts('all', this)">
             全部
         </button>
 
         <button
             class="category-btn"
-            onclick="filterProducts('meat', this)"
-        >
+            onclick="filterProducts('meat', this)">
             🍖 肉食
         </button>
 
         <button
             class="category-btn"
-            onclick="filterProducts('vegan', this)"
-        >
+            onclick="filterProducts('vegan', this)">
             🥬 素食
         </button>
 
         <button
             class="category-btn"
-            onclick="filterProducts('add-on', this)"
-        >
+            onclick="filterProducts('add-on', this)">
             ➕ 加料
         </button>
 
         <button
             class="category-btn"
-            onclick="filterProducts('drink', this)"
-        >
+            onclick="filterProducts('drink', this)">
             🥤 饮料
         </button>
 
     </div>
 
 
-    <div
-        class="products"
-        id="productList"
-    ></div>
+    <div class="products" id="productList"></div>
 
 </section>
 
@@ -822,62 +686,27 @@ footer p {
     <div class="feature-grid">
 
         <div class="feature">
-
-            <div class="feature-icon">
-                🔥
-            </div>
-
+            <div class="feature-icon">🔥</div>
             <h3>现点现做</h3>
-
-            <p>
-                顾客下单后才开始制作
-            </p>
-
+            <p>顾客下单后才开始制作</p>
         </div>
 
-
         <div class="feature">
-
-            <div class="feature-icon">
-                🥬
-            </div>
-
+            <div class="feature-icon">🥬</div>
             <h3>素食选择</h3>
-
-            <p>
-                素食与肉食分开制作
-            </p>
-
+            <p>素食与肉食分开制作</p>
         </div>
 
-
         <div class="feature">
-
-            <div class="feature-icon">
-                🛵
-            </div>
-
+            <div class="feature-icon">🛵</div>
             <h3>快速配送</h3>
-
-            <p>
-                热腾腾送到你家
-            </p>
-
+            <p>热腾腾送到你家</p>
         </div>
 
-
         <div class="feature">
-
-            <div class="feature-icon">
-                💳
-            </div>
-
+            <div class="feature-icon">💳</div>
             <h3>在线付款</h3>
-
-            <p>
-                简单、安全、方便
-            </p>
-
+            <p>简单、安全、方便</p>
         </div>
 
     </div>
@@ -888,22 +717,15 @@ footer p {
 <footer id="about">
 
     <div class="logo">
-
         御螺
-
         <small>YULUO</small>
-
     </div>
 
-    <p>
-        御螺 · 螺蛳粉 Delivery
-    </p>
+    <p>御螺 · 螺蛳粉 Delivery</p>
 
     <br>
 
-    <p>
-        © 2026 御螺 YULUO. All Rights Reserved.
-    </p>
+    <p>© 2026 御螺 YULUO. All Rights Reserved.</p>
 
 </footer>
 
@@ -911,14 +733,11 @@ footer p {
 <div
     class="cart-overlay"
     id="cartOverlay"
-    onclick="closeCart()"
-></div>
+    onclick="closeCart()">
+</div>
 
 
-<div
-    class="cart"
-    id="cart"
->
+<div class="cart" id="cart">
 
     <div class="cart-header">
 
@@ -926,8 +745,7 @@ footer p {
 
         <button
             class="close-cart"
-            onclick="closeCart()"
-        >
+            onclick="closeCart()">
             ×
         </button>
 
@@ -936,58 +754,31 @@ footer p {
 
     <div
         class="cart-items"
-        id="cartItems"
-    ></div>
+        id="cartItems">
+    </div>
 
 
     <div class="cart-footer">
 
         <div class="total-row">
-
-            <span>
-                商品小计
-            </span>
-
-            <span id="subtotal">
-                RM0.00
-            </span>
-
+            <span>商品小计</span>
+            <span id="subtotal">RM0.00</span>
         </div>
-
 
         <div class="total-row">
-
-            <span>
-                Delivery
-            </span>
-
-            <span id="deliveryFee">
-                RM5.00
-            </span>
-
+            <span>Delivery</span>
+            <span id="deliveryFee">RM5.00</span>
         </div>
-
 
         <div class="total-row grand-total">
-
-            <span>
-                总计
-            </span>
-
-            <span id="grandTotal">
-                RM5.00
-            </span>
-
+            <span>总计</span>
+            <span id="grandTotal">RM5.00</span>
         </div>
-
 
         <button
             class="checkout-btn"
-            onclick="openCheckout()"
-        >
-
+            onclick="openCheckout()">
             去结账
-
         </button>
 
     </div>
@@ -997,23 +788,17 @@ footer p {
 
 <div
     class="modal"
-    id="checkoutModal"
->
+    id="checkoutModal">
 
     <div class="checkout">
 
         <button
             class="close-modal"
-            onclick="closeCheckout()"
-        >
+            onclick="closeCheckout()">
             ×
         </button>
 
-
-        <h2>
-            填写配送资料
-        </h2>
-
+        <h2>填写配送资料</h2>
 
         <div class="delivery-info">
 
@@ -1022,7 +807,6 @@ footer p {
             <br><br>
 
             当前配送费：
-
             <strong id="checkoutDeliveryFee">
                 RM5.00
             </strong>
@@ -1036,53 +820,42 @@ footer p {
 
         <div class="form-group">
 
-            <label>
-                顾客姓名
-            </label>
+            <label>顾客姓名</label>
 
             <input
                 type="text"
                 id="customerName"
-                placeholder="请输入姓名"
-            >
+                placeholder="请输入姓名">
 
         </div>
 
 
         <div class="form-group">
 
-            <label>
-                电话号码
-            </label>
+            <label>电话号码</label>
 
             <input
                 type="tel"
                 id="customerPhone"
-                placeholder="01XXXXXXXX"
-            >
+                placeholder="01XXXXXXXX">
 
         </div>
 
 
         <div class="form-group">
 
-            <label>
-                配送地址
-            </label>
+            <label>配送地址</label>
 
             <textarea
                 id="customerAddress"
-                placeholder="请输入完整地址"
-            ></textarea>
+                placeholder="请输入完整地址"></textarea>
 
         </div>
 
 
         <div class="form-group">
 
-            <label>
-                付款方式
-            </label>
+            <label>付款方式</label>
 
             <select id="paymentMethod">
 
@@ -1105,25 +878,19 @@ footer p {
 
         <div class="form-group">
 
-            <label>
-                备注（可选）
-            </label>
+            <label>备注（可选）</label>
 
             <textarea
                 id="customerNote"
-                placeholder="例如：不要敲门、放在门口"
-            ></textarea>
+                placeholder="例如：不要敲门、放在门口"></textarea>
 
         </div>
 
 
         <button
             class="checkout-btn"
-            onclick="placeOrder()"
-        >
-
+            onclick="placeOrder()">
             确认订单
-
         </button>
 
     </div>
@@ -1133,19 +900,17 @@ footer p {
 
 <script>
 
-
-/* ==========================
-   GOOGLE SHEETS
-========================== */
+/* =====================================================
+   GOOGLE SHEETS 地址
+   ===================================================== */
 
 const GOOGLE_SCRIPT_URL =
-const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwr1KhYc_WY3oIKx6X4g4yHyv-k2HPI_3W9EiR4dqYq3oOFrAXg-4DQPvkyws9KrFvj/exec";      
+"https://script.google.com/macros/s/AKfycbwr1KhYc_WY3oIKx6X4g4yHyv-k2HPI_3W9EiR4dqYq3oOFrAXg-4DQPvkyws9KrFvj/exec";
 
 
-/* ==========================
-   PRODUCTS
-========================== */
+/* =====================================================
+   菜单
+   ===================================================== */
 
 const products = [
 
@@ -1227,9 +992,9 @@ const products = [
 let cart = [];
 
 
-/* ==========================
-   DISPLAY PRODUCTS
-========================== */
+/* =====================================================
+   显示菜单
+   ===================================================== */
 
 function displayProducts(list = products) {
 
@@ -1256,13 +1021,9 @@ function displayProducts(list = products) {
 
             <div class="product-info">
 
-                <h3>
-                    ${product.name}
-                </h3>
+                <h3>${product.name}</h3>
 
-                <p>
-                    ${product.description}
-                </p>
+                <p>${product.description}</p>
 
                 <div class="product-bottom">
 
@@ -1272,14 +1033,14 @@ function displayProducts(list = products) {
 
                     <button
                         class="add-btn"
-                        onclick="addToCart(${product.id})"
-                    >
+                        onclick="addToCart(${product.id})">
                         +
                     </button>
 
                 </div>
 
             </div>
+
         `;
 
         container.appendChild(card);
@@ -1289,22 +1050,19 @@ function displayProducts(list = products) {
 }
 
 
-/* ==========================
-   FILTER
-========================== */
+/* =====================================================
+   分类
+   ===================================================== */
 
 function filterProducts(category, button) {
 
     document
         .querySelectorAll(".category-btn")
         .forEach(btn => {
-
             btn.classList.remove("active");
-
         });
 
     button.classList.add("active");
-
 
     if (category === "all") {
 
@@ -1324,24 +1082,23 @@ function filterProducts(category, button) {
 }
 
 
-/* ==========================
-   ADD CART
-========================== */
+/* =====================================================
+   加入购物车
+   ===================================================== */
 
 function addToCart(id) {
 
     const product =
         products.find(
-            product =>
-                product.id === id
+            product => product.id === id
         );
+
+    if (!product) return;
 
     const existing =
         cart.find(
-            item =>
-                item.id === id
+            item => item.id === id
         );
-
 
     if (existing) {
 
@@ -1350,15 +1107,11 @@ function addToCart(id) {
     } else {
 
         cart.push({
-
             ...product,
-
             quantity: 1
-
         });
 
     }
-
 
     updateCart();
 
@@ -1367,9 +1120,9 @@ function addToCart(id) {
 }
 
 
-/* ==========================
-   UPDATE CART
-========================== */
+/* =====================================================
+   更新购物车
+   ===================================================== */
 
 function updateCart() {
 
@@ -1378,30 +1131,22 @@ function updateCart() {
 
     cartItems.innerHTML = "";
 
-
     let subtotal = 0;
-
     let count = 0;
 
 
     if (cart.length === 0) {
 
         cartItems.innerHTML = `
-
             <div style="
                 text-align:center;
                 padding:60px 20px;
                 color:#999;
             ">
-
                 🛒
-
                 <br><br>
-
                 购物车还是空的
-
             </div>
-
         `;
 
     }
@@ -1410,8 +1155,7 @@ function updateCart() {
     cart.forEach(item => {
 
         subtotal +=
-            item.price *
-            item.quantity;
+            item.price * item.quantity;
 
         count += item.quantity;
 
@@ -1419,17 +1163,14 @@ function updateCart() {
         const div =
             document.createElement("div");
 
-        div.className =
-            "cart-item";
+        div.className = "cart-item";
 
 
         div.innerHTML = `
 
             <div>
 
-                <h4>
-                    ${item.name}
-                </h4>
+                <h4>${item.name}</h4>
 
                 <small>
                     RM${item.price.toFixed(2)}
@@ -1438,18 +1179,14 @@ function updateCart() {
                 <div class="quantity">
 
                     <button
-                        onclick="changeQuantity(${item.id}, -1)"
-                    >
+                        onclick="changeQuantity(${item.id}, -1)">
                         -
                     </button>
 
-                    <span>
-                        ${item.quantity}
-                    </span>
+                    <span>${item.quantity}</span>
 
                     <button
-                        onclick="changeQuantity(${item.id}, 1)"
-                    >
+                        onclick="changeQuantity(${item.id}, 1)">
                         +
                     </button>
 
@@ -1472,10 +1209,7 @@ function updateCart() {
 
 
     const delivery =
-        subtotal >= 30
-            ? 0
-            : 5;
-
+        subtotal >= 30 ? 0 : 5;
 
     const total =
         subtotal + delivery;
@@ -1484,70 +1218,61 @@ function updateCart() {
     document.getElementById("cartCount")
         .textContent = count;
 
-
     document.getElementById("subtotal")
         .textContent =
-            `RM${subtotal.toFixed(2)}`;
-
+        `RM${subtotal.toFixed(2)}`;
 
     document.getElementById("deliveryFee")
         .textContent =
-            delivery === 0
-                ? "免费"
-                : `RM${delivery.toFixed(2)}`;
-
+        delivery === 0
+            ? "免费"
+            : `RM${delivery.toFixed(2)}`;
 
     document.getElementById("grandTotal")
         .textContent =
-            `RM${total.toFixed(2)}`;
-
+        `RM${total.toFixed(2)}`;
 
     document.getElementById("checkoutDeliveryFee")
         .textContent =
-            delivery === 0
-                ? "免费"
-                : `RM${delivery.toFixed(2)}`;
+        delivery === 0
+            ? "免费"
+            : `RM${delivery.toFixed(2)}`;
 
 }
 
 
-/* ==========================
-   CHANGE QUANTITY
-========================== */
+/* =====================================================
+   修改数量
+   ===================================================== */
 
 function changeQuantity(id, amount) {
 
     const item =
         cart.find(
-            item =>
-                item.id === id
+            item => item.id === id
         );
 
     if (!item) return;
 
-
     item.quantity += amount;
-
 
     if (item.quantity <= 0) {
 
         cart =
             cart.filter(
-                item =>
-                    item.id !== id
+                item => item.id !== id
             );
 
     }
-
 
     updateCart();
 
 }
 
 
-/* ==========================
-   OPEN CART
-========================== */
+/* =====================================================
+   打开购物车
+   ===================================================== */
 
 function openCart() {
 
@@ -1562,9 +1287,9 @@ function openCart() {
 }
 
 
-/* ==========================
-   CLOSE CART
-========================== */
+/* =====================================================
+   关闭购物车
+   ===================================================== */
 
 function closeCart() {
 
@@ -1579,25 +1304,21 @@ function closeCart() {
 }
 
 
-/* ==========================
-   OPEN CHECKOUT
-========================== */
+/* =====================================================
+   结账
+   ===================================================== */
 
 function openCheckout() {
 
     if (cart.length === 0) {
 
-        alert(
-            "你的购物车还是空的！"
-        );
+        alert("你的购物车还是空的！");
 
         return;
 
     }
 
-
     closeCart();
-
 
     document
         .getElementById("checkoutModal")
@@ -1605,10 +1326,6 @@ function openCheckout() {
 
 }
 
-
-/* ==========================
-   CLOSE CHECKOUT
-========================== */
 
 function closeCheckout() {
 
@@ -1619,9 +1336,9 @@ function closeCheckout() {
 }
 
 
-/* ==========================
-   PLACE ORDER
-========================== */
+/* =====================================================
+   提交订单
+   ===================================================== */
 
 async function placeOrder() {
 
@@ -1661,9 +1378,7 @@ async function placeOrder() {
 
     if (!name) {
 
-        alert(
-            "请输入姓名"
-        );
+        alert("请输入姓名");
 
         return;
 
@@ -1672,9 +1387,7 @@ async function placeOrder() {
 
     if (!phone) {
 
-        alert(
-            "请输入电话号码"
-        );
+        alert("请输入电话号码");
 
         return;
 
@@ -1683,9 +1396,7 @@ async function placeOrder() {
 
     if (!address) {
 
-        alert(
-            "请输入配送地址"
-        );
+        alert("请输入配送地址");
 
         return;
 
@@ -1694,9 +1405,7 @@ async function placeOrder() {
 
     if (cart.length === 0) {
 
-        alert(
-            "购物车是空的"
-        );
+        alert("购物车是空的");
 
         return;
 
@@ -1705,7 +1414,7 @@ async function placeOrder() {
 
     let subtotal = 0;
 
-    let items = [];
+    const items = [];
 
 
     cart.forEach(item => {
@@ -1713,7 +1422,6 @@ async function placeOrder() {
         subtotal +=
             item.price *
             item.quantity;
-
 
         items.push(
             item.name +
@@ -1725,9 +1433,7 @@ async function placeOrder() {
 
 
     const delivery =
-        subtotal >= 30
-            ? 0
-            : 5;
+        subtotal >= 30 ? 0 : 5;
 
 
     const total =
@@ -1743,35 +1449,25 @@ async function placeOrder() {
 
     const data = {
 
-        orderNumber:
-            orderNumber,
+        orderNumber: orderNumber,
 
-        name:
-            name,
+        name: name,
 
-        phone:
-            phone,
+        phone: phone,
 
-        address:
-            address,
+        address: address,
 
-        items:
-            items.join(", "),
+        items: items.join(", "),
 
-        subtotal:
-            subtotal.toFixed(2),
+        subtotal: subtotal.toFixed(2),
 
-        delivery:
-            delivery.toFixed(2),
+        delivery: delivery.toFixed(2),
 
-        total:
-            total.toFixed(2),
+        total: total.toFixed(2),
 
-        note:
-            note,
+        note: note,
 
-        paymentMethod:
-            paymentMethod
+        paymentMethod: paymentMethod
 
     };
 
@@ -1795,166 +1491,29 @@ async function placeOrder() {
             GOOGLE_SCRIPT_URL,
 
             {
-
                 method: "POST",
 
                 mode: "no-cors",
 
                 headers: {
-
-                    "Content-Type":
-                        "text/plain"
-
+                    "Content-Type": "text/plain;charset=utf-8"
                 },
 
-                body:
-                    JSON.stringify(data)
-
+                body: JSON.stringify(data)
             }
 
         );
 
 
-        document.querySelector(
-            ".checkout"
-        ).innerHTML = `
-
-            <div class="success">
-
-                <div class="success-icon">
-                    ✓
-                </div>
-
-                <h2>
-                    订单已收到！
-                </h2>
-
-                <p style="
-                    margin-top:10px;
-                    color:#777;
-                ">
-
-                    感谢您的订单，
-
-                    <br>
-
-                    我们马上开始准备。
-
-                </p>
-
-
-                <div class="order-number">
-
-                    订单号：
-
-                    ${orderNumber}
-
-                </div>
-
-
-                <p>
-
-                    顾客：
-
-                    <strong>
-                        ${name}
-                    </strong>
-
-                </p>
-
-
-                <p style="
-                    margin-top:8px;
-                ">
-
-                    电话：
-
-                    ${phone}
-
-                </p>
-
-
-                <p style="
-                    margin-top:8px;
-                    line-height:1.6;
-                ">
-
-                    地址：
-
-                    ${address}
-
-                </p>
-
-
-                <hr style="
-                    margin:25px 0;
-                    border:none;
-                    border-top:1px solid #eee;
-                ">
-
-
-                <div class="total-row">
-
-                    <span>
-                        商品
-                    </span>
-
-                    <strong>
-
-                        RM${subtotal.toFixed(2)}
-
-                    </strong>
-
-                </div>
-
-
-                <div class="total-row">
-
-                    <span>
-                        Delivery
-                    </span>
-
-                    <strong>
-
-                        ${
-                            delivery === 0
-                                ? "免费"
-                                : "RM" +
-                                  delivery.toFixed(2)
-                        }
-
-                    </strong>
-
-                </div>
-
-
-                <div class="total-row grand-total">
-
-                    <span>
-                        总计
-                    </span>
-
-                    <strong>
-
-                        RM${total.toFixed(2)}
-
-                    </strong>
-
-                </div>
-
-
-                <button
-                    class="checkout-btn"
-                    onclick="location.reload()"
-                >
-
-                    返回首页
-
-                </button>
-
-            </div>
-
-        `;
+        showSuccess(
+            orderNumber,
+            name,
+            phone,
+            address,
+            subtotal,
+            delivery,
+            total
+        );
 
 
         cart = [];
@@ -1966,14 +1525,10 @@ async function placeOrder() {
 
         console.error(error);
 
-
-        submitButton.disabled =
-            false;
-
+        submitButton.disabled = false;
 
         submitButton.textContent =
             "确认订单";
-
 
         alert(
             "订单提交失败，请检查网络后重新尝试。"
@@ -1984,9 +1539,144 @@ async function placeOrder() {
 }
 
 
-/* ==========================
-   INITIALIZE
-========================== */
+/* =====================================================
+   成功页面
+   ===================================================== */
+
+function showSuccess(
+    orderNumber,
+    name,
+    phone,
+    address,
+    subtotal,
+    delivery,
+    total
+) {
+
+    document.querySelector(
+        ".checkout"
+    ).innerHTML = `
+
+        <div class="success">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                订单已收到！
+            </h2>
+
+            <p style="
+                margin-top:10px;
+                color:#777;
+            ">
+                感谢您的订单，
+                <br>
+                我们马上开始准备。
+            </p>
+
+
+            <div class="order-number">
+
+                订单号：
+                ${orderNumber}
+
+            </div>
+
+
+            <p>
+                顾客：
+                <strong>${name}</strong>
+            </p>
+
+
+            <p style="
+                margin-top:8px;
+            ">
+                电话：
+                ${phone}
+            </p>
+
+
+            <p style="
+                margin-top:8px;
+                line-height:1.6;
+            ">
+                地址：
+                ${address}
+            </p>
+
+
+            <hr style="
+                margin:25px 0;
+                border:none;
+                border-top:1px solid #eee;
+            ">
+
+
+            <div class="total-row">
+
+                <span>
+                    商品
+                </span>
+
+                <strong>
+                    RM${subtotal.toFixed(2)}
+                </strong>
+
+            </div>
+
+
+            <div class="total-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <strong>
+
+                    ${
+                        delivery === 0
+                            ? "免费"
+                            : "RM" +
+                              delivery.toFixed(2)
+                    }
+
+                </strong>
+
+            </div>
+
+
+            <div class="total-row grand-total">
+
+                <span>
+                    总计
+                </span>
+
+                <strong>
+                    RM${total.toFixed(2)}
+                </strong>
+
+            </div>
+
+
+            <button
+                class="checkout-btn"
+                onclick="location.reload()">
+                返回首页
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   初始化
+   ===================================================== */
 
 displayProducts();
 
