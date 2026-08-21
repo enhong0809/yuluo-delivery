@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>御螺 YULUO | 螺蛳粉 Delivery</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,6 +27,8 @@ button {
     font-family: inherit;
     cursor: pointer;
 }
+
+/* HEADER */
 
 header {
     position: sticky;
@@ -76,8 +82,11 @@ nav a:hover {
     font-weight: bold;
 }
 
+/* HERO */
+
 .hero {
     min-height: 520px;
+
     background:
         linear-gradient(
             90deg,
@@ -92,7 +101,9 @@ nav a:hover {
 
     display: flex;
     align-items: center;
+
     padding: 60px 8%;
+
     color: white;
 }
 
@@ -143,6 +154,8 @@ nav a:hover {
     font-weight: bold;
 }
 
+/* SECTION */
+
 .section {
     max-width: 1200px;
     margin: auto;
@@ -162,6 +175,8 @@ nav a:hover {
 .section-title p {
     color: #777;
 }
+
+/* CATEGORIES */
 
 .categories {
     display: flex;
@@ -184,6 +199,8 @@ nav a:hover {
     color: #d8ad58;
     border-color: #111;
 }
+
+/* PRODUCTS */
 
 .products {
     display: grid;
@@ -243,6 +260,8 @@ nav a:hover {
     font-size: 22px;
 }
 
+/* FEATURES */
+
 .features {
     background: #111;
     color: white;
@@ -252,9 +271,12 @@ nav a:hover {
     max-width: 1100px;
     margin: auto;
     padding: 50px 20px;
+
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
     gap: 30px;
+
     text-align: center;
 }
 
@@ -277,11 +299,16 @@ nav a:hover {
     font-size: 13px;
 }
 
+/* CART */
+
 .cart-overlay {
     display: none;
+
     position: fixed;
     inset: 0;
+
     background: rgba(0,0,0,.5);
+
     z-index: 200;
 }
 
@@ -291,14 +318,21 @@ nav a:hover {
 
 .cart {
     position: fixed;
+
     top: 0;
     right: -450px;
+
     width: 420px;
     max-width: 100%;
+
     height: 100vh;
+
     background: white;
+
     z-index: 201;
+
     transition: .3s;
+
     display: flex;
     flex-direction: column;
 }
@@ -310,7 +344,9 @@ nav a:hover {
 .cart-header {
     background: #111;
     color: white;
+
     padding: 20px;
+
     display: flex;
     justify-content: space-between;
 }
@@ -331,7 +367,9 @@ nav a:hover {
 .cart-item {
     display: flex;
     justify-content: space-between;
+
     border-bottom: 1px solid #eee;
+
     padding: 15px 0;
 }
 
@@ -347,58 +385,74 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 8px;
+
     margin-top: 8px;
 }
 
 .quantity button {
     width: 25px;
     height: 25px;
+
     border: 1px solid #ddd;
+
     background: white;
+
     border-radius: 5px;
 }
 
 .cart-footer {
     padding: 20px;
+
     border-top: 1px solid #eee;
 }
 
 .total-row {
     display: flex;
     justify-content: space-between;
+
     margin-bottom: 10px;
 }
 
 .grand-total {
     font-size: 20px;
     font-weight: bold;
+
     margin-top: 15px;
 }
 
 .checkout-btn {
     width: 100%;
+
     padding: 15px;
+
     background: #d51f26;
+
     border: none;
+
     color: white;
+
     font-weight: bold;
+
     border-radius: 8px;
+
     margin-top: 15px;
 }
 
-.checkout-btn:disabled {
-    opacity: .6;
-    cursor: wait;
-}
+/* MODAL */
 
 .modal {
     display: none;
+
     position: fixed;
     inset: 0;
+
     background: rgba(0,0,0,.65);
+
     z-index: 300;
+
     align-items: center;
     justify-content: center;
+
     padding: 20px;
 }
 
@@ -408,11 +462,16 @@ nav a:hover {
 
 .checkout {
     background: white;
+
     width: 600px;
     max-width: 100%;
+
     max-height: 90vh;
+
     overflow-y: auto;
+
     border-radius: 15px;
+
     padding: 30px;
 }
 
@@ -426,17 +485,26 @@ nav a:hover {
 
 .form-group label {
     display: block;
+
     margin-bottom: 7px;
+
     font-size: 14px;
+
     font-weight: bold;
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
+
     width: 100%;
+
     padding: 13px;
+
     border: 1px solid #ddd;
+
     border-radius: 7px;
+
     font-size: 14px;
 }
 
@@ -446,85 +514,77 @@ nav a:hover {
 
 .delivery-info {
     background: #fff7e6;
+
     border: 1px solid #f0d394;
+
     padding: 15px;
+
     border-radius: 8px;
+
     margin-bottom: 20px;
+
     font-size: 13px;
 }
 
 .close-modal {
     float: right;
+
     border: none;
+
     background: none;
+
     font-size: 25px;
 }
 
-.payment-box {
-    background: #fff7e6;
-    border: 1px solid #f0d394;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.payment-box h3 {
-    margin-bottom: 10px;
-}
-
-.payment-box p {
-    color: #666;
-    font-size: 13px;
-    margin-bottom: 15px;
-}
-
-.qr-image {
-    width: 240px;
-    max-width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 8px;
-    background: white;
-}
-
-.payment-total {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #d51f26;
-    font-size: 20px;
-}
+/* SUCCESS */
 
 .success {
     text-align: center;
+
     padding: 40px 20px;
 }
 
 .success-icon {
     width: 80px;
     height: 80px;
+
     border-radius: 50%;
+
     background: #1d9b50;
+
     color: white;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     font-size: 40px;
+
     margin: 0 auto 20px;
 }
 
 .order-number {
     background: #f5f5f5;
+
     padding: 15px;
+
     margin: 20px 0;
+
     border-radius: 8px;
+
     font-weight: bold;
 }
 
+/* FOOTER */
+
 footer {
     background: #111;
+
     color: white;
+
     padding: 50px 20px;
+
     text-align: center;
 }
 
@@ -534,8 +594,11 @@ footer .logo {
 
 footer p {
     color: #aaa;
+
     font-size: 13px;
 }
+
+/* MOBILE */
 
 @media (max-width: 800px) {
 
@@ -549,6 +612,7 @@ footer p {
 
     .hero {
         min-height: 500px;
+
         padding: 40px 25px;
     }
 
@@ -562,6 +626,7 @@ footer p {
 
     .products {
         grid-template-columns: repeat(2, 1fr);
+
         gap: 12px;
     }
 
@@ -604,31 +669,49 @@ footer p {
         grid-template-columns: 1fr 1fr;
     }
 }
+
 </style>
+
 </head>
 
 <body>
 
+
 <header>
 
     <div class="logo">
+
         御螺
+
         <small>YULUO</small>
+
     </div>
 
     <nav>
+
         <a href="#home">首页</a>
+
         <a href="#menu">菜单</a>
+
         <a href="#delivery">配送</a>
+
         <a href="#about">关于我们</a>
+
     </nav>
 
-    <button class="cart-button" onclick="openCart()">
+    <button
+        class="cart-button"
+        onclick="openCart()"
+    >
+
         🛒 购物车
+
         <span id="cartCount">0</span>
+
     </button>
 
 </header>
+
 
 <section class="hero" id="home">
 
@@ -639,9 +722,13 @@ footer p {
         <h2>正宗风味 · 送到你家</h2>
 
         <p>
+
             一碗热腾腾的螺蛳粉，
+
             精选食材，现点现做。
+
             肉食与素食分开制作。
+
         </p>
 
         <div class="hero-buttons">
@@ -650,14 +737,18 @@ footer p {
                 class="primary-btn"
                 onclick="document.getElementById('menu').scrollIntoView()"
             >
+
                 立即下单
+
             </button>
 
             <button
                 class="secondary-btn"
                 onclick="document.getElementById('menu').scrollIntoView()"
             >
+
                 查看菜单
+
             </button>
 
         </div>
@@ -665,6 +756,7 @@ footer p {
     </div>
 
 </section>
+
 
 <section class="section" id="menu">
 
@@ -675,6 +767,7 @@ footer p {
         <p>选择你喜欢的口味</p>
 
     </div>
+
 
     <div class="categories">
 
@@ -715,56 +808,105 @@ footer p {
 
     </div>
 
-    <div class="products" id="productList"></div>
+
+    <div
+        class="products"
+        id="productList"
+    ></div>
 
 </section>
+
 
 <section class="features" id="delivery">
 
     <div class="feature-grid">
 
         <div class="feature">
-            <div class="feature-icon">🔥</div>
+
+            <div class="feature-icon">
+                🔥
+            </div>
+
             <h3>现点现做</h3>
-            <p>顾客下单后才开始制作</p>
+
+            <p>
+                顾客下单后才开始制作
+            </p>
+
         </div>
 
+
         <div class="feature">
-            <div class="feature-icon">🥬</div>
+
+            <div class="feature-icon">
+                🥬
+            </div>
+
             <h3>素食选择</h3>
-            <p>素食与肉食分开制作</p>
+
+            <p>
+                素食与肉食分开制作
+            </p>
+
         </div>
 
+
         <div class="feature">
-            <div class="feature-icon">🛵</div>
+
+            <div class="feature-icon">
+                🛵
+            </div>
+
             <h3>快速配送</h3>
-            <p>热腾腾送到你家</p>
+
+            <p>
+                热腾腾送到你家
+            </p>
+
         </div>
 
+
         <div class="feature">
-            <div class="feature-icon">💳</div>
-            <h3>扫码付款</h3>
-            <p>支持 DuitNow QR</p>
+
+            <div class="feature-icon">
+                💳
+            </div>
+
+            <h3>在线付款</h3>
+
+            <p>
+                简单、安全、方便
+            </p>
+
         </div>
 
     </div>
 
 </section>
 
+
 <footer id="about">
 
     <div class="logo">
+
         御螺
+
         <small>YULUO</small>
+
     </div>
 
-    <p>御螺 · 螺蛳粉 Delivery</p>
+    <p>
+        御螺 · 螺蛳粉 Delivery
+    </p>
 
     <br>
 
-    <p>© 2026 御螺 YULUO. All Rights Reserved.</p>
+    <p>
+        © 2026 御螺 YULUO. All Rights Reserved.
+    </p>
 
 </footer>
+
 
 <div
     class="cart-overlay"
@@ -772,7 +914,11 @@ footer p {
     onclick="closeCart()"
 ></div>
 
-<div class="cart" id="cart">
+
+<div
+    class="cart"
+    id="cart"
+>
 
     <div class="cart-header">
 
@@ -787,37 +933,72 @@ footer p {
 
     </div>
 
-    <div class="cart-items" id="cartItems"></div>
+
+    <div
+        class="cart-items"
+        id="cartItems"
+    ></div>
+
 
     <div class="cart-footer">
 
         <div class="total-row">
-            <span>商品小计</span>
-            <span id="subtotal">RM0.00</span>
+
+            <span>
+                商品小计
+            </span>
+
+            <span id="subtotal">
+                RM0.00
+            </span>
+
         </div>
+
 
         <div class="total-row">
-            <span>Delivery</span>
-            <span id="deliveryFee">RM5.00</span>
+
+            <span>
+                Delivery
+            </span>
+
+            <span id="deliveryFee">
+                RM5.00
+            </span>
+
         </div>
 
+
         <div class="total-row grand-total">
-            <span>总计</span>
-            <span id="grandTotal">RM5.00</span>
+
+            <span>
+                总计
+            </span>
+
+            <span id="grandTotal">
+                RM5.00
+            </span>
+
         </div>
+
 
         <button
             class="checkout-btn"
             onclick="openCheckout()"
         >
+
             去结账
+
         </button>
 
     </div>
 
 </div>
 
-<div class="modal" id="checkoutModal">
+
+<div
+    class="modal"
+    id="checkoutModal"
+>
 
     <div class="checkout">
 
@@ -828,16 +1009,23 @@ footer p {
             ×
         </button>
 
-        <h2>填写配送资料</h2>
+
+        <h2>
+            填写配送资料
+        </h2>
+
 
         <div class="delivery-info">
 
-            🛵 <strong>配送费</strong>
+            🛵 <strong>Delivery</strong>
 
             <br><br>
 
             当前配送费：
-            <strong id="checkoutDeliveryFee">RM5.00</strong>
+
+            <strong id="checkoutDeliveryFee">
+                RM5.00
+            </strong>
 
             <br>
 
@@ -845,9 +1033,12 @@ footer p {
 
         </div>
 
+
         <div class="form-group">
 
-            <label>顾客姓名</label>
+            <label>
+                顾客姓名
+            </label>
 
             <input
                 type="text"
@@ -857,9 +1048,12 @@ footer p {
 
         </div>
 
+
         <div class="form-group">
 
-            <label>电话号码</label>
+            <label>
+                电话号码
+            </label>
 
             <input
                 type="tel"
@@ -869,9 +1063,12 @@ footer p {
 
         </div>
 
+
         <div class="form-group">
 
-            <label>配送地址</label>
+            <label>
+                配送地址
+            </label>
 
             <textarea
                 id="customerAddress"
@@ -880,9 +1077,37 @@ footer p {
 
         </div>
 
+
         <div class="form-group">
 
-            <label>备注（可选）</label>
+            <label>
+                付款方式
+            </label>
+
+            <select id="paymentMethod">
+
+                <option value="duitnow">
+                    DuitNow
+                </option>
+
+                <option value="card">
+                    Debit / Credit Card
+                </option>
+
+                <option value="fpx">
+                    FPX
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                备注（可选）
+            </label>
 
             <textarea
                 id="customerNote"
@@ -891,44 +1116,35 @@ footer p {
 
         </div>
 
-        <div class="payment-box">
-
-            <h3>💳 DuitNow QR 付款</h3>
-
-            <p>
-                请先扫码完成付款，再点击下面的「我已付款」。
-            </p>
-
-            <img
-                src="qr.png"
-                alt="DuitNow QR"
-                class="qr-image"
-            >
-
-            <div class="payment-total">
-                应付金额：
-                <span id="paymentTotal">RM0.00</span>
-            </div>
-
-        </div>
 
         <button
             class="checkout-btn"
-            id="submitOrderButton"
             onclick="placeOrder()"
         >
-            ✅ 我已付款，提交订单
+
+            确认订单
+
         </button>
 
     </div>
 
 </div>
 
+
 <script>
 
-const ORDER_API_URL =
-"https://script.google.com/macros/s/AKfycbypiklyS9bwYdIz1I4vK609exr4H1-ZpRrvM624Ip9G0dm-orIu-L4gGDjrpwyYu6WF/exec";
 
+/* ==========================
+   GOOGLE SHEETS
+========================== */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwr1KhYc_WY3oIKx6X4g4yHyv-k2HPI_3W9EiR4dqYq3oOFrAXg-4DQPvkyws9KrFvj/exec";
+
+
+/* ==========================
+   PRODUCTS
+========================== */
 
 const products = [
 
@@ -1010,6 +1226,10 @@ const products = [
 let cart = [];
 
 
+/* ==========================
+   DISPLAY PRODUCTS
+========================== */
+
 function displayProducts(list = products) {
 
     const container =
@@ -1022,7 +1242,8 @@ function displayProducts(list = products) {
         const card =
             document.createElement("div");
 
-        card.className = "product-card";
+        card.className =
+            "product-card";
 
         card.innerHTML = `
 
@@ -1034,9 +1255,13 @@ function displayProducts(list = products) {
 
             <div class="product-info">
 
-                <h3>${product.name}</h3>
+                <h3>
+                    ${product.name}
+                </h3>
 
-                <p>${product.description}</p>
+                <p>
+                    ${product.description}
+                </p>
 
                 <div class="product-bottom">
 
@@ -1063,15 +1288,22 @@ function displayProducts(list = products) {
 }
 
 
+/* ==========================
+   FILTER
+========================== */
+
 function filterProducts(category, button) {
 
     document
         .querySelectorAll(".category-btn")
         .forEach(btn => {
+
             btn.classList.remove("active");
+
         });
 
     button.classList.add("active");
+
 
     if (category === "all") {
 
@@ -1091,17 +1323,24 @@ function filterProducts(category, button) {
 }
 
 
+/* ==========================
+   ADD CART
+========================== */
+
 function addToCart(id) {
 
     const product =
         products.find(
-            product => product.id === id
+            product =>
+                product.id === id
         );
 
     const existing =
         cart.find(
-            item => item.id === id
+            item =>
+                item.id === id
         );
+
 
     if (existing) {
 
@@ -1110,11 +1349,15 @@ function addToCart(id) {
     } else {
 
         cart.push({
+
             ...product,
+
             quantity: 1
+
         });
 
     }
+
 
     updateCart();
 
@@ -1123,6 +1366,10 @@ function addToCart(id) {
 }
 
 
+/* ==========================
+   UPDATE CART
+========================== */
+
 function updateCart() {
 
     const cartItems =
@@ -1130,8 +1377,11 @@ function updateCart() {
 
     cartItems.innerHTML = "";
 
+
     let subtotal = 0;
+
     let count = 0;
+
 
     if (cart.length === 0) {
 
@@ -1155,23 +1405,30 @@ function updateCart() {
 
     }
 
+
     cart.forEach(item => {
 
         subtotal +=
-            item.price * item.quantity;
+            item.price *
+            item.quantity;
 
         count += item.quantity;
+
 
         const div =
             document.createElement("div");
 
-        div.className = "cart-item";
+        div.className =
+            "cart-item";
+
 
         div.innerHTML = `
 
             <div>
 
-                <h4>${item.name}</h4>
+                <h4>
+                    ${item.name}
+                </h4>
 
                 <small>
                     RM${item.price.toFixed(2)}
@@ -1214,7 +1471,10 @@ function updateCart() {
 
 
     const delivery =
-        subtotal >= 30 ? 0 : 5;
+        subtotal >= 30
+            ? 0
+            : 5;
+
 
     const total =
         subtotal + delivery;
@@ -1223,53 +1483,70 @@ function updateCart() {
     document.getElementById("cartCount")
         .textContent = count;
 
+
     document.getElementById("subtotal")
         .textContent =
-        `RM${subtotal.toFixed(2)}`;
+            `RM${subtotal.toFixed(2)}`;
+
 
     document.getElementById("deliveryFee")
         .textContent =
-        delivery === 0
-            ? "免费"
-            : `RM${delivery.toFixed(2)}`;
+            delivery === 0
+                ? "免费"
+                : `RM${delivery.toFixed(2)}`;
+
 
     document.getElementById("grandTotal")
         .textContent =
-        `RM${total.toFixed(2)}`;
+            `RM${total.toFixed(2)}`;
+
 
     document.getElementById("checkoutDeliveryFee")
         .textContent =
-        delivery === 0
-            ? "免费"
-            : `RM${delivery.toFixed(2)}`;
+            delivery === 0
+                ? "免费"
+                : `RM${delivery.toFixed(2)}`;
 
 }
 
+
+/* ==========================
+   CHANGE QUANTITY
+========================== */
 
 function changeQuantity(id, amount) {
 
     const item =
         cart.find(
-            item => item.id === id
+            item =>
+                item.id === id
         );
 
     if (!item) return;
 
+
     item.quantity += amount;
+
 
     if (item.quantity <= 0) {
 
         cart =
             cart.filter(
-                item => item.id !== id
+                item =>
+                    item.id !== id
             );
 
     }
+
 
     updateCart();
 
 }
 
+
+/* ==========================
+   OPEN CART
+========================== */
 
 function openCart() {
 
@@ -1284,6 +1561,10 @@ function openCart() {
 }
 
 
+/* ==========================
+   CLOSE CART
+========================== */
+
 function closeCart() {
 
     document
@@ -1297,36 +1578,25 @@ function closeCart() {
 }
 
 
+/* ==========================
+   OPEN CHECKOUT
+========================== */
+
 function openCheckout() {
 
     if (cart.length === 0) {
 
-        alert("你的购物车还是空的！");
+        alert(
+            "你的购物车还是空的！"
+        );
 
         return;
 
     }
 
+
     closeCart();
 
-    let subtotal = 0;
-
-    cart.forEach(item => {
-
-        subtotal +=
-            item.price * item.quantity;
-
-    });
-
-    const delivery =
-        subtotal >= 30 ? 0 : 5;
-
-    const total =
-        subtotal + delivery;
-
-    document.getElementById("paymentTotal")
-        .textContent =
-        `RM${total.toFixed(2)}`;
 
     document
         .getElementById("checkoutModal")
@@ -1334,6 +1604,10 @@ function openCheckout() {
 
 }
 
+
+/* ==========================
+   CLOSE CHECKOUT
+========================== */
 
 function closeCheckout() {
 
@@ -1344,6 +1618,10 @@ function closeCheckout() {
 }
 
 
+/* ==========================
+   PLACE ORDER
+========================== */
+
 async function placeOrder() {
 
     const name =
@@ -1352,17 +1630,20 @@ async function placeOrder() {
             .value
             .trim();
 
+
     const phone =
         document
             .getElementById("customerPhone")
             .value
             .trim();
 
+
     const address =
         document
             .getElementById("customerAddress")
             .value
             .trim();
+
 
     const note =
         document
@@ -1371,33 +1652,50 @@ async function placeOrder() {
             .trim();
 
 
+    const paymentMethod =
+        document
+            .getElementById("paymentMethod")
+            .value;
+
+
     if (!name) {
 
-        alert("请输入姓名");
+        alert(
+            "请输入姓名"
+        );
 
         return;
 
     }
+
 
     if (!phone) {
 
-        alert("请输入电话号码");
+        alert(
+            "请输入电话号码"
+        );
 
         return;
 
     }
+
 
     if (!address) {
 
-        alert("请输入配送地址");
+        alert(
+            "请输入配送地址"
+        );
 
         return;
 
     }
 
+
     if (cart.length === 0) {
 
-        alert("购物车是空的");
+        alert(
+            "购物车是空的"
+        );
 
         return;
 
@@ -1406,35 +1704,82 @@ async function placeOrder() {
 
     let subtotal = 0;
 
-    let orderItems = [];
+    let items = [];
 
 
     cart.forEach(item => {
 
-        const itemTotal =
+        subtotal +=
             item.price *
             item.quantity;
 
-        subtotal += itemTotal;
 
-        orderItems.push(
-            `${item.name} x ${item.quantity} = RM${itemTotal.toFixed(2)}`
+        items.push(
+            item.name +
+            " x " +
+            item.quantity
         );
 
     });
 
 
     const delivery =
-        subtotal >= 30 ? 0 : 5;
+        subtotal >= 30
+            ? 0
+            : 5;
+
 
     const total =
         subtotal + delivery;
 
 
+    const orderNumber =
+        "YL" +
+        Date.now()
+            .toString()
+            .slice(-8);
+
+
+    const data = {
+
+        orderNumber:
+            orderNumber,
+
+        name:
+            name,
+
+        phone:
+            phone,
+
+        address:
+            address,
+
+        items:
+            items.join(", "),
+
+        subtotal:
+            subtotal.toFixed(2),
+
+        delivery:
+            delivery.toFixed(2),
+
+        total:
+            total.toFixed(2),
+
+        note:
+            note,
+
+        paymentMethod:
+            paymentMethod
+
+    };
+
+
     const submitButton =
-        document.getElementById(
-            "submitOrderButton"
+        document.querySelector(
+            ".checkout .checkout-btn"
         );
+
 
     submitButton.disabled = true;
 
@@ -1442,53 +1787,31 @@ async function placeOrder() {
         "正在提交订单...";
 
 
-    const orderData = {
-
-        name: name,
-
-        phone: phone,
-
-        address: address,
-
-        items: orderItems.join("\n"),
-
-        subtotal: subtotal.toFixed(2),
-
-        delivery: delivery.toFixed(2),
-
-        total: total.toFixed(2),
-
-        note: note
-
-    };
-
-
     try {
 
         await fetch(
-            ORDER_API_URL,
+
+            GOOGLE_SCRIPT_URL,
+
             {
+
                 method: "POST",
 
                 mode: "no-cors",
 
                 headers: {
+
                     "Content-Type":
-                        "text/plain;charset=utf-8"
+                        "text/plain"
+
                 },
 
                 body:
-                    JSON.stringify(orderData)
+                    JSON.stringify(data)
 
             }
+
         );
-
-
-        const orderNumber =
-            "YL" +
-            Date.now()
-                .toString()
-                .slice(-8);
 
 
         document.querySelector(
@@ -1502,71 +1825,167 @@ async function placeOrder() {
                 </div>
 
                 <h2>
-                    订单已提交！
+                    订单已收到！
                 </h2>
 
                 <p style="
                     margin-top:10px;
                     color:#777;
-                    line-height:1.7;
                 ">
 
-                    我们已经收到你的订单。
+                    感谢您的订单，
 
                     <br>
 
-                    请等待我们确认付款。
+                    我们马上开始准备。
 
                 </p>
+
 
                 <div class="order-number">
 
                     订单号：
+
                     ${orderNumber}
 
                 </div>
 
-                <p style="margin-top:15px;">
 
-                    应付金额：
+                <p>
+
+                    顾客：
 
                     <strong>
-                        RM${total.toFixed(2)}
+                        ${name}
                     </strong>
 
                 </p>
+
+
+                <p style="
+                    margin-top:8px;
+                ">
+
+                    电话：
+
+                    ${phone}
+
+                </p>
+
+
+                <p style="
+                    margin-top:8px;
+                    line-height:1.6;
+                ">
+
+                    地址：
+
+                    ${address}
+
+                </p>
+
+
+                <hr style="
+                    margin:25px 0;
+                    border:none;
+                    border-top:1px solid #eee;
+                ">
+
+
+                <div class="total-row">
+
+                    <span>
+                        商品
+                    </span>
+
+                    <strong>
+
+                        RM${subtotal.toFixed(2)}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="total-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <strong>
+
+                        ${
+                            delivery === 0
+                                ? "免费"
+                                : "RM" +
+                                  delivery.toFixed(2)
+                        }
+
+                    </strong>
+
+                </div>
+
+
+                <div class="total-row grand-total">
+
+                    <span>
+                        总计
+                    </span>
+
+                    <strong>
+
+                        RM${total.toFixed(2)}
+
+                    </strong>
+
+                </div>
+
 
                 <button
                     class="checkout-btn"
                     onclick="location.reload()"
                 >
+
                     返回首页
+
                 </button>
 
             </div>
 
         `;
 
+
         cart = [];
+
+        updateCart();
 
 
     } catch (error) {
 
         console.error(error);
 
-        alert(
-            "订单提交失败，请检查网络后再试。"
-        );
 
-        submitButton.disabled = false;
+        submitButton.disabled =
+            false;
+
 
         submitButton.textContent =
-            "我已付款，提交订单";
+            "确认订单";
+
+
+        alert(
+            "订单提交失败，请检查网络后重新尝试。"
+        );
 
     }
 
 }
 
+
+/* ==========================
+   INITIALIZE
+========================== */
 
 displayProducts();
 
