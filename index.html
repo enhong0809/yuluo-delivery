@@ -1,622 +1,613 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>御螺 YULUO | 螺蛳粉 Delivery</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, "Microsoft YaHei", sans-serif;
-            background: #f7f4ed;
-            color: #222;
-        }
-
-        button {
-            font-family: inherit;
-            cursor: pointer;
-        }
-
-        /* =====================
-           HEADER
-        ===================== */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: #111;
-            color: white;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6%;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #d8ad58;
-            letter-spacing: 3px;
-        }
-
-        .logo small {
-            display: block;
-            font-size: 9px;
-            letter-spacing: 5px;
-            text-align: center;
-            color: white;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        nav a:hover {
-            color: #d8ad58;
-        }
-
-        .cart-button {
-            background: #d51f26;
-            border: none;
-            color: white;
-            padding: 12px 18px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        /* =====================
-           HERO
-        ===================== */
-
-        .hero {
-            min-height: 520px;
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,.9),
-                    rgba(0,0,0,.4),
-                    rgba(0,0,0,.15)
-                ),
-                url("https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1600&q=80");
-
-            background-size: cover;
-            background-position: center;
-
-            display: flex;
-            align-items: center;
-            padding: 60px 8%;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .hero h1 {
-            font-size: 62px;
-            color: #d8ad58;
-            margin-bottom: 10px;
-        }
-
-        .hero h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #ddd;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .primary-btn {
-            background: #d51f26;
-            color: white;
-            border: none;
-            padding: 15px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .secondary-btn {
-            background: white;
-            color: #111;
-            border: none;
-            padding: 15px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        /* =====================
-           SECTION
-        ===================== */
-
-    yuluo .section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 70px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 34px;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #777;
-        }
-
-        /* =====================
-           CATEGORIES
-        ===================== */
-
-        .categories {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
-        }
-
-        .category-btn {
-            border: 1px solid #ddd;
-            background: white;
-            padding: 11px 25px;
-            border-radius: 30px;
-            font-size: 14px;
-        }
-
-        .category-btn.active {
-            background: #111;
-            color: #d8ad58;
-            border-color: #111;
-        }
-
-        /* =====================
-           PRODUCTS
-        ===================== */
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,.07);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-info h3 {
-            font-size: 19px;
-            margin-bottom: 8px;
-        }
-
-        .product-info p {
-            color: #777;
-            font-size: 13px;
-            line-height: 1.6;
-            min-height: 42px;
-        }
-
-        .product-bottom {
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            color: #d51f26;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .add-btn {
-            background: #d51f26;
-            border: none;
-            color: white;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            font-size: 22px;
-        }
-
-        /* =====================
-           FEATURES
-        ===================== */
-
-        .features {
-            background: #111;
-            color: white;
-        }
-
-        .feature-grid {
-            max-width: 1100px;
-            margin: auto;
-            padding: 50px 20px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            text-align: center;
-        }
-
-        .feature {
-            padding: 15px;
-        }
-
-        .feature-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .feature h3 {
-            margin-bottom: 8px;
-            color: #d8ad58;
-        }
-
-        .feature p {
-            color: #bbb;
-            font-size: 13px;
-        }
-
-        /* =====================
-           CART SIDEBAR
-        ===================== */
-
-        .cart-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.5);
-            z-index: 200;
-        }
-
-        .cart-overlay.show {
-            display: block;
-        }
-
-        .cart {
-            position: fixed;
-            top: 0;
-            right: -450px;
-            width: 420px;
-            max-width: 100%;
-            height: 100vh;
-            background: white;
-            z-index: 201;
-            transition: .3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart.show {
-            right: 0;
-        }
-
-        .cart-header {
-            background: #111;
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .close-cart {
-            background: none;
-            color: white;
-            border: none;
-            font-size: 25px;
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #eee;
-            padding: 15px 0;
-        }
-
-        .cart-item h4 {
-            margin-bottom: 5px;
-        }
-
-        .cart-item small {
-            color: #888;
-        }
-
-        .quantity {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .quantity button {
-            width: 25px;
-            height: 25px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 5px;
-        }
-
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .grand-total {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            padding: 15px;
-            background: #d51f26;
-            border: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        /* =====================
-           CHECKOUT MODAL
-        ===================== */
-
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.65);
-            z-index: 300;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .checkout {
-            background: white;
-            width: 600px;
-            max-width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 15px;
-            padding: 30px;
-        }
-
-        .checkout h2 {
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 7px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ddd;
-            border-radius: 7px;
-            font-size: 14px;
-        }
-
-        .form-group textarea {
-            min-height: 80px;
-        }
-
-        .delivery-info {
-            background: #fff7e6;
-            border: 1px solid #f0d394;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 13px;
-        }
-
-        .close-modal {
-            float: right;
-            border: none;
-            background: none;
-            font-size: 25px;
-        }
-
-        /* =====================
-           SUCCESS
-        ===================== */
-
-        .success {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: #1d9b50;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            margin: 0 auto 20px;
-        }
-
-        .order-number {
-            background: #f5f5f5;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        /* =====================
-           FOOTER
-        ===================== */
-
-        footer {
-            background: #111;
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        footer .logo {
-            margin-bottom: 15px;
-        }
-
-        footer p {
-            color: #aaa;
-            font-size: 13px;
-        }
-
-        /* =====================
-           MOBILE
-        ===================== */
-
-        @media (max-width: 800px) {
-
-            header {
-                padding: 0 20px;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .hero {
-                min-height: 500px;
-                padding: 40px 25px;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero h2 {
-                font-size: 25px;
-            }
-
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .product-image {
-                height: 170px;
-            }
-
-            .product-info {
-                padding: 14px;
-            }
-
-            .product-info h3 {
-                font-size: 15px;
-            }
-
-            .product-info p {
-                font-size: 12px;
-            }
-
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .products {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons button {
-                width: 100%;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>御螺 YULUO | 螺蛳粉 Delivery</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+    background: #f7f4ed;
+    color: #222;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #111;
+    color: white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #d8ad58;
+    letter-spacing: 3px;
+}
+
+.logo small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-align: center;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #d8ad58;
+}
+
+.cart-button {
+    background: #d51f26;
+    border: none;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.hero {
+    min-height: 520px;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.4),
+            rgba(0,0,0,.15)
+        ),
+        url("https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 62px;
+    color: #d8ad58;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.primary-btn {
+    background: #d51f26;
+    color: white;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.secondary-btn {
+    background: white;
+    color: #111;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #777;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    border: 1px solid #ddd;
+    background: white;
+    padding: 11px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
+.category-btn.active {
+    background: #111;
+    color: #d8ad58;
+    border-color: #111;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+}
+
+.product-image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.product-info p {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 42px;
+}
+
+.product-bottom {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    color: #d51f26;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.add-btn {
+    background: #d51f26;
+    border: none;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.features {
+    background: #111;
+    color: white;
+}
+
+.feature-grid {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.feature {
+    padding: 15px;
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 8px;
+    color: #d8ad58;
+}
+
+.feature p {
+    color: #bbb;
+    font-size: 13px;
+}
+
+.cart-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 200;
+}
+
+.cart-overlay.show {
+    display: block;
+}
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 420px;
+    max-width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 201;
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart.show {
+    right: 0;
+}
+
+.cart-header {
+    background: #111;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-cart {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 25px;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.cart-item h4 {
+    margin-bottom: 5px;
+}
+
+.cart-item small {
+    color: #888;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.quantity button {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 5px;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.grand-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background: #d51f26;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.checkout-btn:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.checkout {
+    background: white;
+    width: 600px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.checkout h2 {
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    min-height: 80px;
+}
+
+.delivery-info {
+    background: #fff7e6;
+    border: 1px solid #f0d394;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.close-modal {
+    float: right;
+    border: none;
+    background: none;
+    font-size: 25px;
+}
+
+.payment-box {
+    background: #fff7e6;
+    border: 1px solid #f0d394;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.payment-box h3 {
+    margin-bottom: 10px;
+}
+
+.payment-box p {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.qr-image {
+    width: 240px;
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px;
+    background: white;
+}
+
+.payment-total {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #d51f26;
+    font-size: 20px;
+}
+
+.success {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #1d9b50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 20px;
+}
+
+.order-number {
+    background: #f5f5f5;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+footer {
+    background: #111;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+footer .logo {
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: #aaa;
+    font-size: 13px;
+}
+
+@media (max-width: 800px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 500px;
+        padding: 40px 25px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .product-image {
+        height: 170px;
+    }
+
+    .product-info {
+        padding: 14px;
+    }
+
+    .product-info h3 {
+        font-size: 15px;
+    }
+
+    .product-info p {
+        font-size: 12px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+
+    .products {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons button {
+        width: 100%;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+</style>
 </head>
 
 <body>
-
-<!-- =====================
-     HEADER
-===================== -->
 
 <header>
 
@@ -638,11 +629,6 @@
     </button>
 
 </header>
-
-
-<!-- =====================
-     HERO
-===================== -->
 
 <section class="hero" id="home">
 
@@ -680,11 +666,6 @@
 
 </section>
 
-
-<!-- =====================
-     MENU
-===================== -->
-
 <section class="section" id="menu">
 
     <div class="section-title">
@@ -694,7 +675,6 @@
         <p>选择你喜欢的口味</p>
 
     </div>
-
 
     <div class="categories">
 
@@ -735,117 +715,62 @@
 
     </div>
 
-
     <div class="products" id="productList"></div>
 
 </section>
-
-
-<!-- =====================
-     FEATURES
-===================== -->
 
 <section class="features" id="delivery">
 
     <div class="feature-grid">
 
         <div class="feature">
-
             <div class="feature-icon">🔥</div>
-
             <h3>现点现做</h3>
-
-            <p>
-                顾客下单后才开始制作
-            </p>
-
+            <p>顾客下单后才开始制作</p>
         </div>
 
-
         <div class="feature">
-
             <div class="feature-icon">🥬</div>
-
             <h3>素食选择</h3>
-
-            <p>
-                素食与肉食分开制作
-            </p>
-
+            <p>素食与肉食分开制作</p>
         </div>
 
-
         <div class="feature">
-
             <div class="feature-icon">🛵</div>
-
             <h3>快速配送</h3>
-
-            <p>
-                热腾腾送到你家
-            </p>
-
+            <p>热腾腾送到你家</p>
         </div>
 
-
         <div class="feature">
-
             <div class="feature-icon">💳</div>
-
-            <h3>在线付款</h3>
-
-            <p>
-                简单、安全、方便
-            </p>
-
+            <h3>扫码付款</h3>
+            <p>支持 DuitNow QR</p>
         </div>
 
     </div>
 
 </section>
 
-
-<!-- =====================
-     FOOTER
-===================== -->
-
 <footer id="about">
 
     <div class="logo">
-
         御螺
-
         <small>YULUO</small>
-
     </div>
 
-    <p>
-        御螺 · 螺蛳粉 Delivery
-    </p>
+    <p>御螺 · 螺蛳粉 Delivery</p>
 
     <br>
 
-    <p>
-        © 2026 御螺 YULUO. All Rights Reserved.
-    </p>
+    <p>© 2026 御螺 YULUO. All Rights Reserved.</p>
 
 </footer>
-
-
-<!-- =====================
-     CART OVERLAY
-===================== -->
 
 <div
     class="cart-overlay"
     id="cartOverlay"
     onclick="closeCart()"
 ></div>
-
-
-<!-- =====================
-     CART
-===================== -->
 
 <div class="cart" id="cart">
 
@@ -862,47 +787,24 @@
 
     </div>
 
-
-    <div
-        class="cart-items"
-        id="cartItems"
-    ></div>
-
+    <div class="cart-items" id="cartItems"></div>
 
     <div class="cart-footer">
 
         <div class="total-row">
-
             <span>商品小计</span>
-
-            <span id="subtotal">
-                RM0.00
-            </span>
-
+            <span id="subtotal">RM0.00</span>
         </div>
-
 
         <div class="total-row">
-
             <span>Delivery</span>
-
-            <span id="deliveryFee">
-                RM5.00
-            </span>
-
+            <span id="deliveryFee">RM5.00</span>
         </div>
-
 
         <div class="total-row grand-total">
-
             <span>总计</span>
-
-            <span id="grandTotal">
-                RM5.00
-            </span>
-
+            <span id="grandTotal">RM5.00</span>
         </div>
-
 
         <button
             class="checkout-btn"
@@ -915,11 +817,6 @@
 
 </div>
 
-
-<!-- =====================
-     CHECKOUT MODAL
-===================== -->
-
 <div class="modal" id="checkoutModal">
 
     <div class="checkout">
@@ -931,27 +828,22 @@
             ×
         </button>
 
-
         <h2>填写配送资料</h2>
-
 
         <div class="delivery-info">
 
-            🛵 <strong>Delivery</strong>
+            🛵 <strong>配送费</strong>
 
             <br><br>
 
             当前配送费：
-            <strong id="checkoutDeliveryFee">
-                RM5.00
-            </strong>
+            <strong id="checkoutDeliveryFee">RM5.00</strong>
 
             <br>
 
             满 RM30 免配送费
 
         </div>
-
 
         <div class="form-group">
 
@@ -965,7 +857,6 @@
 
         </div>
 
-
         <div class="form-group">
 
             <label>电话号码</label>
@@ -978,7 +869,6 @@
 
         </div>
 
-
         <div class="form-group">
 
             <label>配送地址</label>
@@ -989,30 +879,6 @@
             ></textarea>
 
         </div>
-
-
-        <div class="form-group">
-
-            <label>付款方式</label>
-
-            <select id="paymentMethod">
-
-                <option value="duitnow">
-                    DuitNow
-                </option>
-
-                <option value="card">
-                    Debit / Credit Card
-                </option>
-
-                <option value="fpx">
-                    FPX
-                </option>
-
-            </select>
-
-        </div>
-
 
         <div class="form-group">
 
@@ -1025,24 +891,44 @@
 
         </div>
 
+        <div class="payment-box">
+
+            <h3>💳 DuitNow QR 付款</h3>
+
+            <p>
+                请先扫码完成付款，再点击下面的「我已付款」。
+            </p>
+
+            <img
+                src="qr.png"
+                alt="DuitNow QR"
+                class="qr-image"
+            >
+
+            <div class="payment-total">
+                应付金额：
+                <span id="paymentTotal">RM0.00</span>
+            </div>
+
+        </div>
 
         <button
             class="checkout-btn"
+            id="submitOrderButton"
             onclick="placeOrder()"
         >
-            确认订单
+            ✅ 我已付款，提交订单
         </button>
 
     </div>
 
 </div>
 
-
-<!-- =====================
-     JAVASCRIPT
-===================== -->
-
 <script>
+
+const ORDER_API_URL =
+"https://script.google.com/macros/s/AKfycbypiklyS9bwYdIz1I4vK609exr4H1-ZpRrvM624Ip9G0dm-orIu-L4gGDjrpwyYu6WF/exec";
+
 
 const products = [
 
@@ -1124,10 +1010,6 @@ const products = [
 let cart = [];
 
 
-/* =====================
-   显示商品
-===================== */
-
 function displayProducts(list = products) {
 
     const container =
@@ -1137,7 +1019,8 @@ function displayProducts(list = products) {
 
     list.forEach(product => {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
 
         card.className = "product-card";
 
@@ -1151,13 +1034,9 @@ function displayProducts(list = products) {
 
             <div class="product-info">
 
-                <h3>
-                    ${product.name}
-                </h3>
+                <h3>${product.name}</h3>
 
-                <p>
-                    ${product.description}
-                </p>
+                <p>${product.description}</p>
 
                 <div class="product-bottom">
 
@@ -1175,7 +1054,6 @@ function displayProducts(list = products) {
                 </div>
 
             </div>
-
         `;
 
         container.appendChild(card);
@@ -1184,10 +1062,6 @@ function displayProducts(list = products) {
 
 }
 
-
-/* =====================
-   分类
-===================== */
 
 function filterProducts(category, button) {
 
@@ -1217,10 +1091,6 @@ function filterProducts(category, button) {
 }
 
 
-/* =====================
-   加入购物车
-===================== */
-
 function addToCart(id) {
 
     const product =
@@ -1240,11 +1110,8 @@ function addToCart(id) {
     } else {
 
         cart.push({
-
             ...product,
-
             quantity: 1
-
         });
 
     }
@@ -1256,10 +1123,6 @@ function addToCart(id) {
 }
 
 
-/* =====================
-   更新购物车
-===================== */
-
 function updateCart() {
 
     const cartItems =
@@ -1267,11 +1130,8 @@ function updateCart() {
 
     cartItems.innerHTML = "";
 
-
     let subtotal = 0;
-
     let count = 0;
-
 
     if (cart.length === 0) {
 
@@ -1295,14 +1155,12 @@ function updateCart() {
 
     }
 
-
     cart.forEach(item => {
 
         subtotal +=
             item.price * item.quantity;
 
         count += item.quantity;
-
 
         const div =
             document.createElement("div");
@@ -1313,9 +1171,7 @@ function updateCart() {
 
             <div>
 
-                <h4>
-                    ${item.name}
-                </h4>
+                <h4>${item.name}</h4>
 
                 <small>
                     RM${item.price.toFixed(2)}
@@ -1357,14 +1213,8 @@ function updateCart() {
     });
 
 
-    /*
-       满 RM30 免 Delivery
-       否则 RM5
-    */
-
     const delivery =
         subtotal >= 30 ? 0 : 5;
-
 
     const total =
         subtotal + delivery;
@@ -1373,11 +1223,9 @@ function updateCart() {
     document.getElementById("cartCount")
         .textContent = count;
 
-
     document.getElementById("subtotal")
         .textContent =
         `RM${subtotal.toFixed(2)}`;
-
 
     document.getElementById("deliveryFee")
         .textContent =
@@ -1385,11 +1233,9 @@ function updateCart() {
             ? "免费"
             : `RM${delivery.toFixed(2)}`;
 
-
     document.getElementById("grandTotal")
         .textContent =
         `RM${total.toFixed(2)}`;
-
 
     document.getElementById("checkoutDeliveryFee")
         .textContent =
@@ -1400,10 +1246,6 @@ function updateCart() {
 }
 
 
-/* =====================
-   修改数量
-===================== */
-
 function changeQuantity(id, amount) {
 
     const item =
@@ -1413,9 +1255,7 @@ function changeQuantity(id, amount) {
 
     if (!item) return;
 
-
     item.quantity += amount;
-
 
     if (item.quantity <= 0) {
 
@@ -1426,15 +1266,10 @@ function changeQuantity(id, amount) {
 
     }
 
-
     updateCart();
 
 }
 
-
-/* =====================
-   打开购物车
-===================== */
 
 function openCart() {
 
@@ -1449,10 +1284,6 @@ function openCart() {
 }
 
 
-/* =====================
-   关闭购物车
-===================== */
-
 function closeCart() {
 
     document
@@ -1466,10 +1297,6 @@ function closeCart() {
 }
 
 
-/* =====================
-   Checkout
-===================== */
-
 function openCheckout() {
 
     if (cart.length === 0) {
@@ -1480,8 +1307,26 @@ function openCheckout() {
 
     }
 
-
     closeCart();
+
+    let subtotal = 0;
+
+    cart.forEach(item => {
+
+        subtotal +=
+            item.price * item.quantity;
+
+    });
+
+    const delivery =
+        subtotal >= 30 ? 0 : 5;
+
+    const total =
+        subtotal + delivery;
+
+    document.getElementById("paymentTotal")
+        .textContent =
+        `RM${total.toFixed(2)}`;
 
     document
         .getElementById("checkoutModal")
@@ -1499,11 +1344,7 @@ function closeCheckout() {
 }
 
 
-/* =====================
-   下订单
-===================== */
-
-function placeOrder() {
+async function placeOrder() {
 
     const name =
         document
@@ -1511,17 +1352,21 @@ function placeOrder() {
             .value
             .trim();
 
-
     const phone =
         document
             .getElementById("customerPhone")
             .value
             .trim();
 
-
     const address =
         document
             .getElementById("customerAddress")
+            .value
+            .trim();
+
+    const note =
+        document
+            .getElementById("customerNote")
             .value
             .trim();
 
@@ -1534,7 +1379,6 @@ function placeOrder() {
 
     }
 
-
     if (!phone) {
 
         alert("请输入电话号码");
@@ -1542,7 +1386,6 @@ function placeOrder() {
         return;
 
     }
-
 
     if (!address) {
 
@@ -1552,15 +1395,31 @@ function placeOrder() {
 
     }
 
+    if (cart.length === 0) {
+
+        alert("购物车是空的");
+
+        return;
+
+    }
+
 
     let subtotal = 0;
+
+    let orderItems = [];
 
 
     cart.forEach(item => {
 
-        subtotal +=
+        const itemTotal =
             item.price *
             item.quantity;
+
+        subtotal += itemTotal;
+
+        orderItems.push(
+            `${item.name} x ${item.quantity} = RM${itemTotal.toFixed(2)}`
+        );
 
     });
 
@@ -1568,158 +1427,146 @@ function placeOrder() {
     const delivery =
         subtotal >= 30 ? 0 : 5;
 
-
     const total =
         subtotal + delivery;
 
 
-    const orderNumber =
-        "YL" +
-        Date.now()
-            .toString()
-            .slice(-8);
+    const submitButton =
+        document.getElementById(
+            "submitOrderButton"
+        );
+
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+        "正在提交订单...";
 
 
-    document.querySelector(".checkout").innerHTML = `
+    const orderData = {
 
-        <div class="success">
+        name: name,
 
-            <div class="success-icon">
-                ✓
+        phone: phone,
+
+        address: address,
+
+        items: orderItems.join("\n"),
+
+        subtotal: subtotal.toFixed(2),
+
+        delivery: delivery.toFixed(2),
+
+        total: total.toFixed(2),
+
+        note: note
+
+    };
+
+
+    try {
+
+        await fetch(
+            ORDER_API_URL,
+            {
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+                },
+
+                body:
+                    JSON.stringify(orderData)
+
+            }
+        );
+
+
+        const orderNumber =
+            "YL" +
+            Date.now()
+                .toString()
+                .slice(-8);
+
+
+        document.querySelector(
+            ".checkout"
+        ).innerHTML = `
+
+            <div class="success">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    订单已提交！
+                </h2>
+
+                <p style="
+                    margin-top:10px;
+                    color:#777;
+                    line-height:1.7;
+                ">
+
+                    我们已经收到你的订单。
+
+                    <br>
+
+                    请等待我们确认付款。
+
+                </p>
+
+                <div class="order-number">
+
+                    订单号：
+                    ${orderNumber}
+
+                </div>
+
+                <p style="margin-top:15px;">
+
+                    应付金额：
+
+                    <strong>
+                        RM${total.toFixed(2)}
+                    </strong>
+
+                </p>
+
+                <button
+                    class="checkout-btn"
+                    onclick="location.reload()"
+                >
+                    返回首页
+                </button>
+
             </div>
 
-            <h2>
-                订单已收到！
-            </h2>
+        `;
 
-            <p style="
-                margin-top:10px;
-                color:#777;
-            ">
-                感谢您的订单，
-                我们马上开始准备。
-            </p>
+        cart = [];
 
 
-            <div class="order-number">
+    } catch (error) {
 
-                订单号：
+        console.error(error);
 
-                ${orderNumber}
+        alert(
+            "订单提交失败，请检查网络后再试。"
+        );
 
-            </div>
+        submitButton.disabled = false;
 
+        submitButton.textContent =
+            "我已付款，提交订单";
 
-            <p>
-                顾客：
-                <strong>${name}</strong>
-            </p>
-
-            <p style="margin-top:8px;">
-                电话：
-                ${phone}
-            </p>
-
-            <p style="
-                margin-top:8px;
-                line-height:1.6;
-            ">
-                地址：
-                ${address}
-            </p>
-
-
-            <hr style="
-                margin:25px 0;
-                border:none;
-                border-top:1px solid #eee;
-            ">
-
-
-            <div class="total-row">
-
-                <span>
-                    商品
-                </span>
-
-                <strong>
-                    RM${subtotal.toFixed(2)}
-                </strong>
-
-            </div>
-
-
-            <div class="total-row">
-
-                <span>
-                    Delivery
-                </span>
-
-                <strong>
-                    ${
-                        delivery === 0
-                        ? "免费"
-                        : "RM" + delivery.toFixed(2)
-                    }
-                </strong>
-
-            </div>
-
-
-            <div class="total-row grand-total">
-
-                <span>
-                    总计
-                </span>
-
-                <strong>
-                    RM${total.toFixed(2)}
-                </strong>
-
-            </div>
-
-
-            <button
-                class="checkout-btn"
-                onclick="location.reload()"
-            >
-                返回首页
-            </button>
-
-        </div>
-
-    `;
-
-
-    /*
-       目前只是 Demo。
-       下一版会把订单真正保存到数据库。
-    */
-
-    console.log({
-
-        orderNumber,
-        name,
-        phone,
-        address,
-        cart,
-        subtotal,
-        delivery,
-        total
-
-    });
-
-
-    cart = [];
-
-    updateCart();
+    }
 
 }
 
-
-/* =====================
-   初始化
-===================== */
 
 displayProducts();
 
