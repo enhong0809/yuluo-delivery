@@ -459,6 +459,21 @@ nav a:hover {
     font-size: 25px;
 }
 
+.receipt-box {
+    background: #f7f7f7;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.receipt-note {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5;
+}
+
 .success {
     text-align: center;
     padding: 40px 20px;
@@ -705,8 +720,8 @@ footer p {
 
         <div class="feature">
             <div class="feature-icon">💳</div>
-            <h3>在线付款</h3>
-            <p>简单、安全、方便</p>
+            <h3>付款方式</h3>
+            <p>Cash / QR Payment</p>
         </div>
 
     </div>
@@ -853,25 +868,61 @@ footer p {
         </div>
 
 
+        <!-- =========================
+             付款方式
+             ========================= -->
+
         <div class="form-group">
 
             <label>付款方式</label>
 
-            <select id="paymentMethod">
+            <select
+                id="paymentMethod"
+                onchange="toggleReceipt()">
 
-                <option value="duitnow">
-                    DuitNow
+                <option value="cash">
+                    💵 Cash
                 </option>
 
-                <option value="card">
-                    Debit / Credit Card
-                </option>
-
-                <option value="fpx">
-                    FPX
+                <option value="qr">
+                    📱 QR Payment
                 </option>
 
             </select>
+
+        </div>
+
+
+        <!-- =========================
+             QR 收据上传
+             ========================= -->
+
+        <div
+            class="form-group"
+            id="receiptGroup"
+            style="display:none;">
+
+            <label>
+                QR 付款收据
+                <span style="color:#d51f26;">*</span>
+            </label>
+
+            <div class="receipt-box">
+
+                <input
+                    type="file"
+                    id="receiptFile"
+                    accept="image/*,.pdf"
+                    onchange="checkReceiptFile()">
+
+                <span
+                    class="receipt-note"
+                    id="receiptStatus">
+                    选择 QR Payment 后，
+                    必须上传付款收据。
+                </span>
+
+            </div>
 
         </div>
 
@@ -901,11 +952,11 @@ footer p {
 <script>
 
 /* =====================================================
-   GOOGLE SHEETS 地址
+   GOOGLE APPS SCRIPT WEB APP
    ===================================================== */
 
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwr1KhYc_WY3oIKx6X4g4yHyv-k2HPI_3W9EiR4dqYq3oOFrAXg-4DQPvkyws9KrFvj/exec";
+"https://script.google.com/macros/s/AKfycbykq0cpGSQ0r3PRPePeczL3ThOYvvDoSQpOCG9KRO16mnQDCFYC2YmcI9J9k7QOiZvX/exec";
 
 
 /* =====================================================
@@ -1337,6 +1388,167 @@ function closeCheckout() {
 
 
 /* =====================================================
+   QR 收据显示 / 隐藏
+   ===================================================== */
+
+function toggleReceipt() {
+
+    const paymentMethod =
+        document
+            .getElementById("paymentMethod")
+            .value;
+
+
+    const receiptGroup =
+        document
+            .getElementById("receiptGroup");
+
+
+    const receiptFile =
+        document
+            .getElementById("receiptFile");
+
+
+    const receiptStatus =
+        document
+            .getElementById("receiptStatus");
+
+
+    if (paymentMethod === "qr") {
+
+        receiptGroup.style.display =
+            "block";
+
+        receiptStatus.textContent =
+            "⚠️ QR Payment 必须上传付款收据。";
+
+        receiptStatus.style.color =
+            "#d51f26";
+
+    } else {
+
+        receiptGroup.style.display =
+            "none";
+
+        receiptFile.value = "";
+
+        receiptStatus.textContent =
+            "Cash 不需要上传收据。";
+
+        receiptStatus.style.color =
+            "#777";
+
+    }
+
+}
+
+
+/* =====================================================
+   检查收据
+   ===================================================== */
+
+function checkReceiptFile() {
+
+    const receiptFile =
+        document
+            .getElementById("receiptFile");
+
+
+    const receiptStatus =
+        document
+            .getElementById("receiptStatus");
+
+
+    const file =
+        receiptFile.files[0];
+
+
+    if (!file) {
+
+        receiptStatus.textContent =
+            "⚠️ 请上传付款收据。";
+
+        receiptStatus.style.color =
+            "#d51f26";
+
+        return;
+
+    }
+
+
+    // 最大 10MB
+    if (
+        file.size >
+        10 * 1024 * 1024
+    ) {
+
+        alert(
+            "付款收据不能超过 10MB。"
+        );
+
+        receiptFile.value = "";
+
+        receiptStatus.textContent =
+            "⚠️ 文件太大，请选择 10MB 以下的文件。";
+
+        receiptStatus.style.color =
+            "#d51f26";
+
+        return;
+
+    }
+
+
+    receiptStatus.textContent =
+        "✓ 已选择：" +
+        file.name;
+
+    receiptStatus.style.color =
+        "#1d9b50";
+
+}
+
+
+/* =====================================================
+   文件转 Base64
+   ===================================================== */
+
+function fileToBase64(file) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function() {
+
+                    resolve(
+                        reader.result
+                    );
+
+                };
+
+
+            reader.onerror =
+                function(error) {
+
+                    reject(error);
+
+                };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
    提交订单
    ===================================================== */
 
@@ -1376,6 +1588,16 @@ async function placeOrder() {
             .value;
 
 
+    const receiptFile =
+        document
+            .getElementById("receiptFile")
+            .files[0];
+
+
+    /* ==========================
+       检查基本资料
+       ========================== */
+
     if (!name) {
 
         alert("请输入姓名");
@@ -1412,6 +1634,28 @@ async function placeOrder() {
     }
 
 
+    /* ==========================
+       QR 必须有收据
+       ========================== */
+
+    if (
+        paymentMethod === "qr" &&
+        !receiptFile
+    ) {
+
+        alert(
+            "QR Payment 必须上传付款收据！"
+        );
+
+        return;
+
+    }
+
+
+    /* ==========================
+       计算金额
+       ========================== */
+
     let subtotal = 0;
 
     const items = [];
@@ -1422,6 +1666,7 @@ async function placeOrder() {
         subtotal +=
             item.price *
             item.quantity;
+
 
         items.push(
             item.name +
@@ -1447,30 +1692,83 @@ async function placeOrder() {
             .slice(-8);
 
 
+    /* ==========================
+       建立订单
+       ========================== */
+
     const data = {
 
-        orderNumber: orderNumber,
+        orderNumber:
+            orderNumber,
 
-        name: name,
+        name:
+            name,
 
-        phone: phone,
+        phone:
+            phone,
 
-        address: address,
+        address:
+            address,
 
-        items: items.join(", "),
+        items:
+            items.join(", "),
 
-        subtotal: subtotal.toFixed(2),
+        subtotal:
+            subtotal.toFixed(2),
 
-        delivery: delivery.toFixed(2),
+        delivery:
+            delivery.toFixed(2),
 
-        total: total.toFixed(2),
+        total:
+            total.toFixed(2),
 
-        note: note,
+        note:
+            note,
 
-        paymentMethod: paymentMethod
+        paymentMethod:
+            paymentMethod
 
     };
 
+
+    /* ==========================
+       QR 上传收据
+       ========================== */
+
+    if (
+        paymentMethod === "qr" &&
+        receiptFile
+    ) {
+
+        try {
+
+            data.receiptName =
+                receiptFile.name;
+
+
+            data.receipt =
+                await fileToBase64(
+                    receiptFile
+                );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "读取付款收据失败，请重新选择。"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* ==========================
+       提交
+       ========================== */
 
     const submitButton =
         document.querySelector(
@@ -1478,7 +1776,9 @@ async function placeOrder() {
         );
 
 
-    submitButton.disabled = true;
+    submitButton.disabled =
+        true;
+
 
     submitButton.textContent =
         "正在提交订单...";
@@ -1491,28 +1791,46 @@ async function placeOrder() {
             GOOGLE_SCRIPT_URL,
 
             {
+
                 method: "POST",
 
                 mode: "no-cors",
 
                 headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
+
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+
                 },
 
-                body: JSON.stringify(data)
+                body:
+                    JSON.stringify(data)
+
             }
 
         );
 
 
+        /* ==========================
+           显示成功
+           ========================== */
+
         showSuccess(
+
             orderNumber,
+
             name,
+
             phone,
+
             address,
+
             subtotal,
+
             delivery,
+
             total
+
         );
 
 
@@ -1525,10 +1843,14 @@ async function placeOrder() {
 
         console.error(error);
 
-        submitButton.disabled = false;
+
+        submitButton.disabled =
+            false;
+
 
         submitButton.textContent =
             "确认订单";
+
 
         alert(
             "订单提交失败，请检查网络后重新尝试。"
@@ -1544,6 +1866,7 @@ async function placeOrder() {
    ===================================================== */
 
 function showSuccess(
+
     orderNumber,
     name,
     phone,
@@ -1551,6 +1874,7 @@ function showSuccess(
     subtotal,
     delivery,
     total
+
 ) {
 
     document.querySelector(
@@ -1587,7 +1911,9 @@ function showSuccess(
 
             <p>
                 顾客：
-                <strong>${name}</strong>
+                <strong>
+                    ${name}
+                </strong>
             </p>
 
 
@@ -1681,6 +2007,8 @@ function showSuccess(
 displayProducts();
 
 updateCart();
+
+toggleReceipt();
 
 </script>
 
