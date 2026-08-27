@@ -1440,6 +1440,8 @@ function toggleReceipt() {
 
 
     const receiptGroup =
+        const duitnowQR =
+    document.getElementById("duitnowQR");
         document
             .getElementById("receiptGroup");
 
@@ -1453,7 +1455,7 @@ function toggleReceipt() {
         document
             .getElementById("receiptStatus");
 
-
+duitnowQR.style.display = "block";
     if (paymentMethod === "qr") {
 
         receiptGroup.style.display =
