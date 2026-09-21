@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>御螺 YULUO | 螺蛳粉 Delivery</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+    background: #f7f4ed;
+    color: #222;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #111;
+    color: white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #d8ad58;
+    letter-spacing: 3px;
+}
+
+.logo small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-align: center;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #d8ad58;
+}
+
+.cart-button {
+    background: #d51f26;
+    border: none;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.hero {
+    min-height: 520px;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.4),
+            rgba(0,0,0,.15)
+        ),
+        url("https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 62px;
+    color: #d8ad58;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.primary-btn,
+.secondary-btn {
+    border: none;
+    padding: 15px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.primary-btn {
+    background: #d51f26;
+    color: white;
+}
+
+.secondary-btn {
+    background: white;
+    color: #111;
+}
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #777;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    border: 1px solid #ddd;
+    background: white;
+    padding: 11px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
+.category-btn.active {
+    background: #111;
+    color: #d8ad58;
+    border-color: #111;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+}
+
+.product-image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.product-info p {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 42px;
+}
+
+.product-bottom {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    color: #d51f26;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.add-btn {
+    background: #d51f26;
+    border: none;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.features {
+    background: #111;
+    color: white;
+}
+
+.feature-grid {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.feature {
+    padding: 15px;
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 8px;
+    color: #d8ad58;
+}
+
+.feature p {
+    color: #bbb;
+    font-size: 13px;
+}
+
+.cart-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 200;
+}
+
+.cart-overlay.show {
+    display: block;
+}
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 420px;
+    max-width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 201;
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart.show {
+    right: 0;
+}
+
+.cart-header {
+    background: #111;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-cart {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 25px;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.cart-item h4 {
+    margin-bottom: 5px;
+}
+
+.cart-item small {
+    color: #888;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.quantity button {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 5px;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.grand-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background: #d51f26;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.checkout-btn:disabled {
+    opacity: .6;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.checkout {
+    background: white;
+    width: 600px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.checkout h2 {
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    min-height: 80px;
+}
+
+.delivery-info {
+    background: #fff7e6;
+    border: 1px solid #f0d394;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.close-modal {
+    float: right;
+    border: none;
+    background: none;
+    font-size: 25px;
+}
+
+.receipt-box {
+    background: #f7f7f7;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.receipt-note {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5;
+}
+
+.success {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #1d9b50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 20px;
+}
+
+.order-number {
+    background: #f5f5f5;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+footer {
+    background: #111;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+footer .logo {
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: #aaa;
+    font-size: 13px;
+}
+
+@media (max-width: 800px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 500px;
+        padding: 40px 25px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .product-image {
+        height: 170px;
+    }
+
+    .product-info {
+        padding: 14px;
+    }
+
+    .product-info h3 {
+        font-size: 15px;
+    }
+
+    .product-info p {
+        font-size: 12px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+
+    .products {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons button {
+        width: 100%;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.addon-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    z-index: 400;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.addon-modal.show { display: flex; }
+.addon-box {
+    background: white;
+    width: 520px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 15px;
+    padding: 25px;
+}
+.addon-box h2 { margin-bottom: 8px; }
+.addon-box .sub { color:#777; font-size:13px; margin-bottom:18px; }
+.option-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+    margin-bottom:20px;
+}
+.option-item {
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:10px;
+}
+.option-item label {
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+.option-item small { color:#777; }
+.spice-row {
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin:10px 0 20px;
+}
+.spice-btn {
+    border:1px solid #ddd;
+    background:white;
+    padding:10px 18px;
+    border-radius:20px;
+}
+.spice-btn.active {
+    background:#111;
+    color:#d8ad58;
+    border-color:#111;
+}
+.addon-actions {
+    display:flex;
+    gap:10px;
+}
+.addon-actions button {
+    flex:1;
+    padding:13px;
+    border-radius:8px;
+    border:none;
+    font-weight:bold;
+}
+.cancel-addon { background:#eee; }
+.confirm-addon { background:#d51f26; color:white; }
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        御螺
+        <small>YULUO</small>
+    </div>
+
+    <nav>
+        <a href="#home">首页</a>
+        <a href="#menu">菜单</a>
+        <a href="#delivery">配送</a>
+        <a href="#about">关于我们</a>
+    </nav>
+
+    <button class="cart-button" onclick="openCart()">
+        🛒 购物车
+        <span id="cartCount">0</span>
+    </button>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>御螺</h1>
+
+        <h2>正宗风味 · 送到你家</h2>
+
+        <p>
+            一碗热腾腾的螺蛳粉，
+            精选食材，现点现做。
+            肉食与素食分开制作。
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="document.getElementById('menu').scrollIntoView()">
+                立即下单
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="document.getElementById('menu').scrollIntoView()">
+                查看菜单
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="menu">
+
+    <div class="section-title">
+
+        <h2>我们的菜单</h2>
+
+        <p>选择你喜欢的口味</p>
+
+    </div>
+
+
+    <div class="categories">
+
+        <button
+            class="category-btn active"
+            onclick="filterProducts('all', this)">
+            全部
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterProducts('meat', this)">
+            🍖 肉食
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterProducts('vegan', this)">
+            🥬 素食
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterProducts('add-on', this)">
+            ➕ 加料
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterProducts('drink', this)">
+            🥤 饮料
+        </button>
+
+    </div>
+
+
+    <div class="products" id="productList"></div>
+
+</section>
+
+
+<section class="features" id="delivery">
+
+    <div class="feature-grid">
+
+        <div class="feature">
+            <div class="feature-icon">🔥</div>
+            <h3>现点现做</h3>
+            <p>顾客下单后才开始制作</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🥬</div>
+            <h3>素食选择</h3>
+            <p>素食与肉食分开制作</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🛵</div>
+            <h3>快速配送</h3>
+            <p>热腾腾送到你家</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">💳</div>
+            <h3>付款方式</h3>
+            <p>Cash / QR Payment</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer id="about">
+
+    <div class="logo">
+        御螺
+        <small>YULUO</small>
+    </div>
+
+    <p>御螺 · 螺蛳粉 Delivery</p>
+
+    <br>
+
+    <p>© 2026 御螺 YULUO. All Rights Reserved.</p>
+
+</footer>
+
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()">
+</div>
+
+
+<div class="cart" id="cart">
+
+    <div class="cart-header">
+
+        <h2>购物车</h2>
+
+        <button
+            class="close-cart"
+            onclick="closeCart()">
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="cart-items"
+        id="cartItems">
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="total-row">
+            <span>商品小计</span>
+            <span id="subtotal">RM0.00</span>
+        </div>
+
+        <div class="total-row">
+            <span>Delivery</span>
+            <span id="deliveryFee">RM5.00</span>
+        </div>
+
+        <div class="total-row grand-total">
+            <span>总计</span>
+            <span id="grandTotal">RM5.00</span>
+        </div>
+
+        <button
+            class="checkout-btn"
+            onclick="openCheckout()">
+            去结账
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<div class="addon-modal" id="addonModal">
+    <div class="addon-box">
+        <button class="close-modal" onclick="closeAddonModal()">×</button>
+        <h2 id="addonProductName">选择螺蛳粉</h2>
+        <p class="sub">选择辣度，也可以为这一碗加料</p>
+
+        <h3>🌶️ 辣度选择</h3>
+        <div class="spice-row">
+            <button type="button" class="spice-btn active" data-spice="小辣" onclick="selectSpice(this)">小辣</button>
+            <button type="button" class="spice-btn" data-spice="中辣" onclick="selectSpice(this)">中辣</button>
+            <button type="button" class="spice-btn" data-spice="特辣" onclick="selectSpice(this)">特辣</button>
+        </div>
+
+        <h3>➕ ADD ON 加料</h3>
+        <div class="option-grid" id="addonOptions"></div>
+
+        <div class="addon-actions">
+            <button class="cancel-addon" onclick="closeAddonModal()">取消</button>
+            <button class="confirm-addon" onclick="confirmAddonSelection()">加入购物车</button>
+        </div>
+    </div>
+</div>
+
+<div
+    class="modal"
+    id="checkoutModal">
+
+    <div class="checkout">
+
+        <button
+            class="close-modal"
+            onclick="closeCheckout()">
+            ×
+        </button>
+
+        <h2>填写配送资料</h2>
+
+        <div class="delivery-info">
+
+            🛵 <strong>Delivery</strong>
+
+            <br><br>
+
+            当前配送费：
+            <strong id="checkoutDeliveryFee">
+                RM5.00
+            </strong>
+
+            <br>
+
+            满 RM30 免配送费
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>顾客姓名</label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="请输入姓名">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>电话号码</label>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="01XXXXXXXX">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>配送地址</label>
+
+            <textarea
+                id="customerAddress"
+                placeholder="请输入完整地址"></textarea>
+
+        </div>
+
+
+        <!-- =========================
+             付款方式
+             ========================= -->
+
+        <div class="form-group">
+
+            <label>付款方式</label>
+
+            <select
+                id="paymentMethod"
+                onchange="toggleReceipt()">
+
+                <option value="cash">
+                    💵 Cash
+                </option>
+
+                <option value="qr">
+                    📱 QR Payment
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- =========================
+             QR 收据上传
+             ========================= -->
+
+        <div
+            class="form-group"
+            id="receiptGroup"
+            style="display:none;">
+
+            <label>
+                QR 付款收据
+                <!-- =========================
+     DuitNow QR Code
+     ========================= -->
+
+<div
+    class="form-group"
+    id="duitnowQR"
+    style="display:none; text-align:center;">
+
+    <label>DuitNow QR</label>
+
+    <div class="receipt-box">
+
+        <p style="margin-bottom:15px;">
+            📱 请使用 DuitNow 扫描付款
+        </p>
+
+        <img
+            src="Duit%20Now/Duit%20Now.png"
+            alt="DuitNow QR"
+            style="
+                width:280px;
+                max-width:100%;
+                display:block;
+                margin:auto;
+                border-radius:10px;
+            "
+        >
+
+        <p style="
+            margin-top:12px;
+            font-size:12px;
+            color:#777;
+        ">
+            完成付款后，请上传付款收据
+        </p>
+
+    </div>
+
+</div>
+                <span style="color:#d51f26;">*</span>
+            </label>
+
+            <div class="receipt-box">
+
+                <input
+                    type="file"
+                    id="receiptFile"
+                    accept="image/*,.pdf"
+                    onchange="checkReceiptFile()">
+
+                <span
+                    class="receipt-note"
+                    id="receiptStatus">
+                    选择 QR Payment 后，
+                    必须上传付款收据。
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>备注（可选）</label>
+
+            <textarea
+                id="customerNote"
+                placeholder="例如：不要敲门、放在门口"></textarea>
+
+        </div>
+
+
+        <button
+            class="checkout-btn"
+            onclick="placeOrder()">
+            确认订单
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   GOOGLE APPS SCRIPT WEB APP
+   ===================================================== */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbykq0cpGSQ0r3PRPePeczL3ThOYvvDoSQpOCG9KRO16mnQDCFYC2YmcI9J9k7QOiZvX/exec";
+
+
+/* =====================================================
+   菜单
+   ===================================================== */
+
+const products = [
+
+    {
+        id: 1,
+        name: "御螺招牌",
+        description: "花生 · 酸笋 · 酸豆角 · 炸弹💣 · 空心菜 · 腐竹",
+        price: 11.90,
+        category: "meat",
+        image: "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 2,
+        name: "五花御螺",
+        description: "花生 · 酸笋 · 酸豆角 · 炸弹💣 · 空心菜 · 腐竹 · 五花肉",
+        price: 13.90,
+        category: "meat",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 3,
+        name: "午餐御螺",
+        description: "花生 · 酸笋 · 酸豆角 · 炸弹💣 · 空心菜 · 腐竹 · 午餐肉",
+        price: 13.90,
+        category: "meat",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 4,
+        name: "丸丸御螺",
+        description: "花生 · 酸笋 · 酸豆角 · 炸弹💣 · 空心菜 · 腐竹 · 肉丸 · 鱼丸",
+        price: 13.90,
+        category: "meat",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 5,
+        name: "素香御螺",
+        description: "花生 · 酸笋 · 酸豆角 · 炸弹💣 · 空心菜 · 腐竹",
+        price: 12.90,
+        category: "vegan",
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 6,
+        name: "炸弹💣",
+        description: "加料",
+        price: 2.00,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 7,
+        name: "金针菇",
+        description: "金针菇",
+        price: 1.50,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 8,
+        name: "五花肉（50g）",
+        description: "五花肉",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 9,
+        name: "鹌鹑蛋 8粒",
+        description: "鹌鹑蛋",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 10,
+        name: "鱼丸 8粒",
+        description: "鱼丸",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 11,
+        name: "肉丸 5粒",
+        description: "肉丸",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 12,
+        name: "腐竹 4片",
+        description: "酥香腐竹",
+        price: 2.00,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 13,
+        name: "玲玲卷 4个",
+        description: "玲玲卷",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 14,
+        name: "Cheese 豆腐 4粒",
+        description: "Cheese 豆腐",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 15,
+        name: "午餐肉 4片",
+        description: "午餐肉",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 16,
+        name: "酸笋",
+        description: "酸笋",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 17,
+        name: "酸豆角",
+        description: "酸豆角",
+        price: 3.90,
+        category: "add-on",
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        id: 18,
+        name: "饮料",
+        description: "冰凉饮料",
+        price: 3.00,
+        category: "drink",
+        image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80"
+    }
+
+];
+
+
+let cart = [];
+
+
+/* =====================================================
+   显示菜单
+   ===================================================== */
+
+function displayProducts(list = products) {
+
+    const container =
+        document.getElementById("productList");
+
+    container.innerHTML = "";
+
+    list.forEach(product => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "product-card";
+
+        card.innerHTML = `
+
+            <img
+                class="product-image"
+                src="${product.image}"
+                alt="${product.name}"
+            >
+
+            <div class="product-info">
+
+                <h3>${product.name}</h3>
+
+                <p>${product.description}</p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        RM${product.price.toFixed(2)}
+                    </span>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart(${product.id})">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   分类
+   ===================================================== */
+
+function filterProducts(category, button) {
+
+    document
+        .querySelectorAll(".category-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    button.classList.add("active");
+
+    if (category === "all") {
+
+        displayProducts(products);
+
+    } else {
+
+        displayProducts(
+            products.filter(
+                product =>
+                    product.category === category
+            )
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   加入购物车
+   ===================================================== */
+
+let pendingProduct = null;
+let selectedSpice = "小辣";
+
+function isMainBowl(product) {
+    return product && (product.category === "meat" || product.category === "vegan");
+}
+
+function addToCart(id) {
+    const product = products.find(product => product.id === id);
+    if (!product) return;
+
+    if (isMainBowl(product)) {
+        openAddonModal(product);
+        return;
+    }
+
+    addProductDirectly(product, []);
+}
+
+function addProductDirectly(product, addons, spice = "") {
+    const addonTotal = addons.reduce((sum, addon) => sum + addon.price, 0);
+    const finalPrice = product.price + addonTotal;
+
+    const addonNames = addons.map(a => a.name);
+    const optionKey = product.id + "|" + spice + "|" + addonNames.join(",");
+
+    const existing = cart.find(item => item.optionKey === optionKey);
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({
+            ...product,
+            price: finalPrice,
+            basePrice: product.price,
+            quantity: 1,
+            spice: spice,
+            addons: addonNames,
+            optionKey: optionKey
+        });
+    }
+
+    updateCart();
+    openCart();
+}
+
+function openAddonModal(product) {
+    pendingProduct = product;
+    selectedSpice = "小辣";
+
+    document.getElementById("addonProductName").textContent = product.name;
+    document.querySelectorAll(".spice-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.spice === "小辣");
+    });
+
+    const addonList = document.getElementById("addonOptions");
+    const addons = products.filter(p => p.category === "add-on");
+
+    addonList.innerHTML = addons.map(addon => `
+        <div class="option-item">
+            <label>
+                <span>
+                    <input type="checkbox" class="addon-check" value="${addon.id}">
+                    ${addon.name}
+                </span>
+                <small>+RM${addon.price.toFixed(2)}</small>
+            </label>
+        </div>
+    `).join("");
+
+    document.getElementById("addonModal").classList.add("show");
+}
+
+function closeAddonModal() {
+    document.getElementById("addonModal").classList.remove("show");
+    pendingProduct = null;
+}
+
+function selectSpice(button) {
+    selectedSpice = button.dataset.spice;
+    document.querySelectorAll(".spice-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+    button.classList.add("active");
+}
+
+function confirmAddonSelection() {
+    if (!pendingProduct) return;
+
+    const selectedIds = [...document.querySelectorAll(".addon-check:checked")]
+        .map(input => Number(input.value));
+
+    const addons = products.filter(p => selectedIds.includes(p.id));
+
+    addProductDirectly(pendingProduct, addons, selectedSpice);
+    closeAddonModal();
+}
+
+
+/* =====================================================
+   更新购物车
+   ===================================================== */
+
+function updateCart() {
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    cartItems.innerHTML = "";
+
+    let subtotal = 0;
+    let count = 0;
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <div style="
+                text-align:center;
+                padding:60px 20px;
+                color:#999;
+            ">
+                🛒
+                <br><br>
+                购物车还是空的
+            </div>
+        `;
+
+    }
+
+
+    cart.forEach(item => {
+
+        subtotal +=
+            item.price * item.quantity;
+
+        count += item.quantity;
+
+
+        const div =
+            document.createElement("div");
+
+        div.className = "cart-item";
+
+
+        div.innerHTML = `
+
+            <div>
+
+                <h4>${item.name}</h4>
+
+                <small>
+                    RM${item.price.toFixed(2)}
+                    ${item.spice ? `<br>🌶️ ${item.spice}` : ""}
+                    ${item.addons && item.addons.length ? `<br>➕ ${item.addons.join("、")}` : ""}
+                </small>
+
+                <div class="quantity">
+
+                    <button
+                        onclick="changeQuantity(${item.id}, -1)">
+                        -
+                    </button>
+
+                    <span>${item.quantity}</span>
+
+                    <button
+                        onclick="changeQuantity(${item.id}, 1)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+            <strong>
+                RM${(
+                    item.price *
+                    item.quantity
+                ).toFixed(2)}
+            </strong>
+
+        `;
+
+        cartItems.appendChild(div);
+
+    });
+
+
+    const delivery =
+        subtotal >= 30 ? 0 : 5;
+
+    const total =
+        subtotal + delivery;
+
+
+    document.getElementById("cartCount")
+        .textContent = count;
+
+    document.getElementById("subtotal")
+        .textContent =
+        `RM${subtotal.toFixed(2)}`;
+
+    document.getElementById("deliveryFee")
+        .textContent =
+        delivery === 0
+            ? "免费"
+            : `RM${delivery.toFixed(2)}`;
+
+    document.getElementById("grandTotal")
+        .textContent =
+        `RM${total.toFixed(2)}`;
+
+    document.getElementById("checkoutDeliveryFee")
+        .textContent =
+        delivery === 0
+            ? "免费"
+            : `RM${delivery.toFixed(2)}`;
+
+}
+
+
+/* =====================================================
+   修改数量
+   ===================================================== */
+
+function changeQuantity(id, amount) {
+
+    const item =
+        cart.find(
+            item => item.id === id
+        );
+
+    if (!item) return;
+
+    item.quantity += amount;
+
+    if (item.quantity <= 0) {
+
+        cart =
+            cart.filter(
+                item => item.id !== id
+            );
+
+    }
+
+    updateCart();
+
+}
+
+
+/* =====================================================
+   打开购物车
+   ===================================================== */
+
+function openCart() {
+
+    document
+        .getElementById("cart")
+        .classList.add("show");
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   关闭购物车
+   ===================================================== */
+
+function closeCart() {
+
+    document
+        .getElementById("cart")
+        .classList.remove("show");
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   结账
+   ===================================================== */
+
+function openCheckout() {
+
+    if (cart.length === 0) {
+
+        alert("你的购物车还是空的！");
+
+        return;
+
+    }
+
+    closeCart();
+
+    document
+        .getElementById("checkoutModal")
+        .classList.add("show");
+
+}
+
+
+function closeCheckout() {
+
+    document
+        .getElementById("checkoutModal")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   QR 收据显示 / 隐藏
+   ===================================================== */
+
+function toggleReceipt() {
+
+    const paymentMethod =
+        document.getElementById("paymentMethod").value;
+
+    const receiptGroup =
+        document.getElementById("receiptGroup");
+
+    const duitnowQR =
+        document.getElementById("duitnowQR");
+
+    const receiptFile =
+        document.getElementById("receiptFile");
+
+    const receiptStatus =
+        document.getElementById("receiptStatus");
+
+    if (paymentMethod === "qr") {
+
+        duitnowQR.style.display = "block";
+        receiptGroup.style.display = "block";
+
+        receiptStatus.textContent =
+            "⚠️ QR Payment 必须上传付款收据。";
+
+        receiptStatus.style.color = "#d51f26";
+
+    } else {
+
+        duitnowQR.style.display = "none";
+        receiptGroup.style.display = "none";
+
+        receiptFile.value = "";
+
+        receiptStatus.textContent =
+            "Cash 不需要上传收据。";
+
+        receiptStatus.style.color = "#777";
+    }
+}
+
+
+/* =====================================================
+   检查收据
+   ===================================================== */
+
+function checkReceiptFile() {
+
+    const receiptFile =
+        document
+            .getElementById("receiptFile");
+
+
+    const receiptStatus =
+        document
+            .getElementById("receiptStatus");
+
+
+    const file =
+        receiptFile.files[0];
+
+
+    if (!file) {
+
+        receiptStatus.textContent =
+            "⚠️ 请上传付款收据。";
+
+        receiptStatus.style.color =
+            "#d51f26";
+
+        return;
+
+    }
+
+
+    // 最大 10MB
+    if (
+        file.size >
+        10 * 1024 * 1024
+    ) {
+
+        alert(
+            "付款收据不能超过 10MB。"
+        );
+
+        receiptFile.value = "";
+
+        receiptStatus.textContent =
+            "⚠️ 文件太大，请选择 10MB 以下的文件。";
+
+        receiptStatus.style.color =
+            "#d51f26";
+
+        return;
+
+    }
+
+
+    receiptStatus.textContent =
+        "✓ 已选择：" +
+        file.name;
+
+    receiptStatus.style.color =
+        "#1d9b50";
+
+}
+
+
+/* =====================================================
+   文件转 Base64
+   ===================================================== */
+
+function fileToBase64(file) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function() {
+
+                    resolve(
+                        reader.result
+                    );
+
+                };
+
+
+            reader.onerror =
+                function(error) {
+
+                    reject(error);
+
+                };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   提交订单
+   ===================================================== */
+
+async function placeOrder() {
+
+    const name =
+        document
+            .getElementById("customerName")
+            .value
+            .trim();
+
+
+    const phone =
+        document
+            .getElementById("customerPhone")
+            .value
+            .trim();
+
+
+    const address =
+        document
+            .getElementById("customerAddress")
+            .value
+            .trim();
+
+
+    const note =
+        document
+            .getElementById("customerNote")
+            .value
+            .trim();
+
+
+    const paymentMethod =
+        document
+            .getElementById("paymentMethod")
+            .value;
+
+
+    const receiptFile =
+        document
+            .getElementById("receiptFile")
+            .files[0];
+
+
+    /* ==========================
+       检查基本资料
+       ========================== */
+
+    if (!name) {
+
+        alert("请输入姓名");
+
+        return;
+
+    }
+
+
+    if (!phone) {
+
+        alert("请输入电话号码");
+
+        return;
+
+    }
+
+
+    if (!address) {
+
+        alert("请输入配送地址");
+
+        return;
+
+    }
+
+
+    if (cart.length === 0) {
+
+        alert("购物车是空的");
+
+        return;
+
+    }
+
+
+    /* ==========================
+       QR 必须有收据
+       ========================== */
+
+    if (
+        paymentMethod === "qr" &&
+        !receiptFile
+    ) {
+
+        alert(
+            "QR Payment 必须上传付款收据！"
+        );
+
+        return;
+
+    }
+
+
+    /* ==========================
+       计算金额
+       ========================== */
+
+    let subtotal = 0;
+
+    const items = [];
+
+
+    cart.forEach(item => {
+
+        subtotal +=
+            item.price *
+            item.quantity;
+
+
+        items.push(
+            item.name +
+            " x " +
+            item.quantity
+        );
+
+    });
+
+
+    const delivery =
+        subtotal >= 30 ? 0 : 5;
+
+
+    const total =
+        subtotal + delivery;
+
+
+    const orderNumber =
+        "YL" +
+        Date.now()
+            .toString()
+            .slice(-8);
+
+
+    /* ==========================
+       建立订单
+       ========================== */
+
+    const data = {
+
+        orderNumber:
+            orderNumber,
+
+        name:
+            name,
+
+        phone:
+            phone,
+
+        address:
+            address,
+
+        items:
+            items.join(", "),
+
+        subtotal:
+            subtotal.toFixed(2),
+
+        delivery:
+            delivery.toFixed(2),
+
+        total:
+            total.toFixed(2),
+
+        note:
+            note,
+
+        paymentMethod:
+            paymentMethod
+
+    };
+
+
+    /* ==========================
+       QR 上传收据
+       ========================== */
+
+    if (
+        paymentMethod === "qr" &&
+        receiptFile
+    ) {
+
+        try {
+
+            data.receiptName =
+                receiptFile.name;
+
+
+            data.receipt =
+                await fileToBase64(
+                    receiptFile
+                );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "读取付款收据失败，请重新选择。"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* ==========================
+       提交
+       ========================== */
+
+    const submitButton =
+        document.querySelector(
+            ".checkout .checkout-btn"
+        );
+
+
+    submitButton.disabled =
+        true;
+
+
+    submitButton.textContent =
+        "正在提交订单...";
+
+
+    try {
+
+        await fetch(
+
+            GOOGLE_SCRIPT_URL,
+
+            {
+
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+
+                },
+
+                body:
+                    JSON.stringify(data)
+
+            }
+
+        );
+
+
+        /* ==========================
+           显示成功
+           ========================== */
+
+        showSuccess(
+
+            orderNumber,
+
+            name,
+
+            phone,
+
+            address,
+
+            subtotal,
+
+            delivery,
+
+            total
+
+        );
+
+
+        cart = [];
+
+        updateCart();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        submitButton.disabled =
+            false;
+
+
+        submitButton.textContent =
+            "确认订单";
+
+
+        alert(
+            "订单提交失败，请检查网络后重新尝试。"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   成功页面
+   ===================================================== */
+
+function showSuccess(
+
+    orderNumber,
+    name,
+    phone,
+    address,
+    subtotal,
+    delivery,
+    total
+
+) {
+
+    document.querySelector(
+        ".checkout"
+    ).innerHTML = `
+
+        <div class="success">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                订单已收到！
+            </h2>
+
+            <p style="
+                margin-top:10px;
+                color:#777;
+            ">
+                感谢您的订单，
+                <br>
+                我们马上开始准备。
+            </p>
+
+
+            <div class="order-number">
+
+                订单号：
+                ${orderNumber}
+
+            </div>
+
+
+            <p>
+                顾客：
+                <strong>
+                    ${name}
+                </strong>
+            </p>
+
+
+            <p style="
+                margin-top:8px;
+            ">
+                电话：
+                ${phone}
+            </p>
+
+
+            <p style="
+                margin-top:8px;
+                line-height:1.6;
+            ">
+                地址：
+                ${address}
+            </p>
+
+
+            <hr style="
+                margin:25px 0;
+                border:none;
+                border-top:1px solid #eee;
+            ">
+
+
+            <div class="total-row">
+
+                <span>
+                    商品
+                </span>
+
+                <strong>
+                    RM${subtotal.toFixed(2)}
+                </strong>
+
+            </div>
+
+
+            <div class="total-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <strong>
+
+                    ${
+                        delivery === 0
+                            ? "免费"
+                            : "RM" +
+                              delivery.toFixed(2)
+                    }
+
+                </strong>
+
+            </div>
+
+
+            <div class="total-row grand-total">
+
+                <span>
+                    总计
+                </span>
+
+                <strong>
+                    RM${total.toFixed(2)}
+                </strong>
+
+            </div>
+
+
+            <button
+                class="checkout-btn"
+                onclick="location.reload()">
+                返回首页
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   初始化
+   ===================================================== */
+
+displayProducts();
+
+updateCart();
+
+toggleReceipt();
+
+</script>
+
+</body>
+</html>
